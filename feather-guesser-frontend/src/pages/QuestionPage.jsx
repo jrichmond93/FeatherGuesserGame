@@ -9,6 +9,9 @@ import {
   Box,
 } from "@mui/material";
 import CenteredPage from "../components/CenteredPage";
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
+import CloseIcon from "@mui/icons-material/Close";
 
 function shuffle(array) {
   // Fisher-Yates shuffle
@@ -130,15 +133,16 @@ export default function QuestionPage({ onEndGame, onQuit }) {
     <CenteredPage>
       {/* Quit button in top right, absolute to viewport */}
       <Box sx={{ position: 'fixed', top: 16, right: 24, zIndex: 10 }}>
-        <Button
-          size="small"
-          variant="outlined"
-          color="error"
-          onClick={() => onQuit && onQuit()}
-          sx={{ minWidth: 0, px: 1.5, fontSize: 13, fontWeight: 500, borderRadius: 2 }}
-        >
-          Quit
-        </Button>
+        <Tooltip title="Quit Game">
+          <IconButton
+            color="error"
+            size="large"
+            onClick={() => onQuit && onQuit()}
+            sx={{ bgcolor: "#fff", boxShadow: 1, ":hover": { bgcolor: "#ffeaea" } }}
+          >
+            <CloseIcon />
+          </IconButton>
+        </Tooltip>
       </Box>
       <Stack spacing={2} alignItems="center" sx={{ width: '100%' }}>
           <Stack direction="row" width="100%" justifyContent="space-between" alignItems="center">
@@ -266,27 +270,37 @@ export default function QuestionPage({ onEndGame, onQuit }) {
                     {String.fromCharCode(65 + idx)}: {bird.CommonName}
                   </Button>
                 ))}
-                {/* Show More Info and Next buttons side by side after answer is revealed */}
-                {showAnswer && timer > 0 && (
-                  <Stack direction="row" spacing={2} width="100%" sx={{ mt: 2 }}>
-                    <Button
-                      variant="outlined"
-                      color="info"
-                      onClick={handleShowInfo}
-                      sx={{ flex: 1, fontWeight: 600, fontSize: 16, borderRadius: 2 }}
-                    >
-                      More Info
-                    </Button>
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      onClick={handleNext}
-                      sx={{ flex: 1, fontWeight: 600, fontSize: 16, borderRadius: 2 }}
-                    >
-                      Next
-                    </Button>
-                  </Stack>
-                )}
+                {/* Reserve space for More Info and Next buttons to prevent screen jump */}
+                <Box sx={{ height: 56, mt: 2, width: "100%" }}>
+                  {showAnswer && timer > 0 ? (
+                    <Stack direction="row" spacing={2} width="100%">
+                      <Button
+                        variant="outlined"
+                        color="info"
+                        onClick={handleShowInfo}
+                        sx={{ flex: 1, fontWeight: 600, fontSize: 16, borderRadius: 2 }}
+                      >
+                        More Info
+                      </Button>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={handleNext}
+                        sx={{ flex: 1, fontWeight: 600, fontSize: 16, borderRadius: 2 }}
+                      >
+                        Next
+                      </Button>
+                    </Stack>
+                  ) : (
+                    // Invisible placeholder to reserve space
+                    <Box sx={{ height: 40, width: "100%", visibility: "hidden" }}>
+                      <Stack direction="row" spacing={2} width="100%">
+                        <Button sx={{ flex: 1 }} />
+                        <Button sx={{ flex: 1 }} />
+                      </Stack>
+                    </Box>
+                  )}
+                </Box>
               </Stack>
             </>
           )}

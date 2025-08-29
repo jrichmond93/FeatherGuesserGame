@@ -1,6 +1,5 @@
-
 import React, { useEffect, useRef } from "react";
-import { Typography, Button, Stack } from "@mui/material";
+import { Typography, Button, Stack, Box } from "@mui/material";
 import CenteredPage from "../components/CenteredPage";
 
 // Simple burst animation for emojis
