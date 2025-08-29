@@ -21,9 +21,6 @@ export default function HowToPlay({ onBack, onPlayNow }) {
             <li>Reverse Mode: Guess the bird image from a description snippet.</li>
             <li>Remove Wrong Answers: One incorrect option will disappear after 10 seconds, and another after 20 seconds.</li>
           </ol>
-          <Typography variant="body2" color="text.secondary">
-            Large, touch-friendly buttons make it easy to play on any device. Enjoy vibrant nature-inspired colors and subtle animations for an engaging experience!
-          </Typography>
           <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', my: 3 }}>
             <img src="/feather.png" alt="Feather" style={{ maxWidth: 120, width: '100%', opacity: 0.85 }} />
           </Box>
