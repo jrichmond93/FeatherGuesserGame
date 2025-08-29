@@ -1,0 +1,402 @@
+[
+  {
+    "CommonName": "South Island Wren",
+    "ScientificName": "Xenicus gilviventris",
+    "Family": "Acanthisittidae (New Zealand Wrens)",
+    "RangeInfo": "High mountains of south island (new zealand)",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/291833152/medium.jpg",
+    "SpeciesDescription": "The <b>New Zealand rock wren</b> (<i>Xenicus gilviventris</i>) is a small New Zealand wren (family Acanthisittidae) endemic to the South Island of New Zealand. Its Māori names include <i>pīwauwau</i> (\"little complaining bird\"), <i>mātuitui</i>, and <i>tuke</i> (\"twitch\", after its bobbing motion). Outside New Zealand it is sometimes known as the <b>rockwren</b> or <b>South Island wren</b> to distinguish it from the unrelated rock wren of North America.",
+    "ImageAttribution": "(c) Ben Ackerley, some rights reserved (CC BY-NC), uploaded by Ben Ackerley",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Xenicus gilviventris"
+  },
+  {
+    "CommonName": "Goldenface",
+    "ScientificName": "Pachycare flavogriseum",
+    "Family": "Acanthizidae (Thornbills and Allies)",
+    "RangeInfo": "The species is endemic to the island of New Guinea, where it occurs in both Papua and Papua New Guinea. The preferred habitat...",
+    "ImageUrl": "https://static.inaturalist.org/photos/72119878/medium.jpg",
+    "SpeciesDescription": "The <b>goldenface</b> (<i>Pachycare flavogriseum</i>) is a species of passerine bird endemic to New Guinea. It is the only species (monotypic) within the genus <i><b>Pachycare</b></i>.",
+    "ImageAttribution": "(c) Chien Lee, wszelkie prawa zastrzeżone, przesłane przez użytkownika Chien Lee",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Pachycare flavogriseum"
+  },
+  {
+    "CommonName": "Fernwren",
+    "ScientificName": "Oreoscopus gutturalis",
+    "Family": "Acanthizidae (Thornbills and Allies)",
+    "RangeInfo": "Montane wet tropical zone of northeastern queensland",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/169689078/medium.jpg",
+    "SpeciesDescription": "The <b>fernwren</b> (<i>Oreoscopus gutturalis</i>) is a species of bird in the family Acanthizidae. It is monotypic within the genus <i><b>Oreoscopus</b></i>.",
+    "ImageAttribution": "(c) Aaron Bean, niektóre prawa zastrzeżone (CC BY-NC), przesłane przez użytkownika Aaron Bean",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Oreoscopus gutturalis"
+  },
+  {
+    "CommonName": "Redthroat",
+    "ScientificName": "Pyrrholaemus brunneus",
+    "Family": "Acanthizidae (Thornbills and Allies)",
+    "RangeInfo": "Arid southern australia",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/48143343/medium.jpeg",
+    "SpeciesDescription": "The <b>redthroat</b> (<i>Pyrrholaemus brunneus</i>) is a small, mostly ground-dwelling species of bird in the family Acanthizidae. It is endemic to Australia, occurring mostly in arid and semi-arid areas containing acacia and chenopod shrublands. The species has a distinctive red throat patch and is able to mimic the calls of numerous other bird species.",
+    "ImageAttribution": "(c) Marie Tarrant, some rights reserved (CC BY-NC), uploaded by Marie Tarrant",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Pyrrholaemus brunneus"
+  },
+  {
+    "CommonName": "Speckled Warbler",
+    "ScientificName": "Pyrrholaemus sagittatus",
+    "Family": "Acanthizidae (Thornbills and Allies)",
+    "RangeInfo": "Central and eastern queensland through new south wales to eastern and central victoria",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/350797146/medium.jpg",
+    "SpeciesDescription": "The <b>speckled warbler</b> (<i>Pyrrholaemus sagittatus</i>) is a species of bird in the family Acanthizidae. It is endemic to eastern Australia. Its natural habitat is temperate forests.",
+    "ImageAttribution": "(c) Nicole Brooker, some rights reserved (CC BY-NC), uploaded by Nicole Brooker",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Pyrrholaemus sagittatus"
+  },
+  {
+    "CommonName": "Western Fieldwren",
+    "ScientificName": "Calamanthus montanellus",
+    "Family": "Acanthizidae (Thornbills and Allies)",
+    "RangeInfo": "South of line from pt. culver to geraldton (except far southwestern corner, western australia)",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/292896916/medium.jpg",
+    "SpeciesDescription": "The <b>western fieldwren</b> or <b>calamanthus</b> (<i>Calamanthus montanellus</i>) is a species of bird in the family Acanthizidae, endemic to southwestern Australia. It is often considered a subspecies of the rufous fieldwren, most notably by Christidis and Boles in their 2008 work, but as a separate species by many other authorities including the IOC.",
+    "ImageAttribution": "(c) Tony Palliser, niektóre prawa zastrzeżone (CC BY-NC), przesłane przez użytkownika Tony Palliser",
+    "InfoUrl": "http://en.wikipedia.org/wiki/Western_fieldwren"
+  },
+  {
+    "CommonName": "Rockwarbler",
+    "ScientificName": "Origma solitaria",
+    "Family": "Acanthizidae (Thornbills and Allies)",
+    "RangeInfo": "Sandstone outcrops between hunter river and bega, coastal new south wales",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/103732354/medium.jpg",
+    "SpeciesDescription": "The <b>rockwarbler</b> or <b>origma</b> (<i>Origma solitaria</i>), is a bird in the family Acanthizidae. The species is the only member of the genus <i><b>Origma</b></i>. It is the only bird species endemic to the state of New South Wales in Australia.",
+    "ImageAttribution": "(c) brettmezen, some rights reserved (CC BY-NC)",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Origma solitaria"
+  },
+  {
+    "CommonName": "Atherton Scrubwren",
+    "ScientificName": "Sericornis keri",
+    "Family": "Acanthizidae (Thornbills and Allies)",
+    "RangeInfo": "Northeastern queensland (windsor tablelands to paluma range)",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/62014665/medium.jpg",
+    "SpeciesDescription": "The <b>Atherton scrubwren</b> (<i>Sericornis keri</i>) is a bird species. Placed in the family Pardalotidae in the Sibley-Ahlquist taxonomy, this has met with opposition and indeed is now known to be wrong; they rather belong to the independent family Acanthizidae.",
+    "ImageAttribution": "(c) Steve Dew, some rights reserved (CC BY-NC), uploaded by Steve Dew",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Sericornis keri"
+  },
+  {
+    "CommonName": "Vogelkop Scrubwren",
+    "ScientificName": "Aethomyias rufescens",
+    "Family": "Acanthizidae (Thornbills and Allies)",
+    "RangeInfo": "Western new guinea (arfak and tamrau mountains and bomberai peninsula)",
+    "ImageUrl": "https://static.inaturalist.org/photos/69624224/medium.jpeg",
+    "SpeciesDescription": "The <b>Vogelkop scrubwren</b> (<i><b>Aethomyias rufescens</b></i>) is a bird species in the family Acanthizidae. It is endemic to West Papua, Indonesia. Its natural habitat is subtropical or tropical moist montane forests.",
+    "ImageAttribution": "(c) Carlos N. G. Bocos, wszelkie prawa zastrzeżone, przesłane przez użytkownika Carlos N. G. Bocos",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Aethomyias rufescens"
+  },
+  {
+    "CommonName": "Buff-faced Scrubwren",
+    "ScientificName": "Aethomyias perspicillatus",
+    "Family": "Acanthizidae (Thornbills and Allies)",
+    "RangeInfo": "Humid montane forest of central and eastern new guinea",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/118155401/medium.jpeg",
+    "SpeciesDescription": "The <b>buff-faced scrubwren</b> (<i><b>Aethomyias perspicillatus</b></i>) is a bird species in the family Acanthizidae. It is found in the highlands of New Guinea; Its natural habitat is subtropical or tropical moist montane forests.",
+    "ImageAttribution": "(c) Benoît Segerer, niektóre prawa zastrzeżone (CC BY-NC), przesłane przez użytkownika Benoît Segerer",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Aethomyias perspicillatus"
+  },
+  {
+    "CommonName": "Banded Whiteface",
+    "ScientificName": "Aphelocephala nigricincta",
+    "Family": "Acanthizidae (Thornbills and Allies)",
+    "RangeInfo": "Interior of central western australia to far southwestern queensland",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/1342161/medium.jpg",
+    "SpeciesDescription": "The <b>banded whiteface</b> (<i>Aphelocephala nigricincta</i>) is a species of bird in the family Pardalotidae. It is endemic to dryer regions of Australia.",
+    "ImageAttribution": "(c) Ron Knight, some rights reserved (CC BY)",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Aphelocephala nigricincta"
+  },
+  {
+    "CommonName": "Chestnut-breasted Whiteface",
+    "ScientificName": "Aphelocephala pectoralis",
+    "Family": "Acanthizidae (Thornbills and Allies)",
+    "RangeInfo": "Elevated gibber plains of central south australia",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/73877028/medium.jpg",
+    "SpeciesDescription": "The <b>chestnut-breasted whiteface</b> (<i>Aphelocephala pectoralis</i>) is a species of bird in the family Acanthizidae. It is endemic to Australia and found primarily in northern South Australia.",
+    "ImageAttribution": "(c) Kym Nicolson, niektóre prawa zastrzeżone (CC BY), przesłane przez użytkownika Kym Nicolson",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Aphelocephala pectoralis"
+  },
+  {
+    "CommonName": "Gray Thornbill",
+    "ScientificName": "Acanthiza cinerea",
+    "Family": "Acanthizidae (Thornbills and Allies)",
+    "RangeInfo": "Arfak mountains to southeastern ranges of new guinea",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/9742659/medium.jpeg",
+    "SpeciesDescription": "The <b>grey thornbill</b>, <b>ashy gerygone</b> or <b>mountain gerygone</b> (<i>Acanthiza cinerea</i>) is a species of bird in the family Acanthizidae. It is found in the highlands of New Guinea. Its natural habitat is subtropical or tropical moist montane forests.",
+    "ImageAttribution": "(c) markus lilje, niektóre prawa zastrzeżone (CC BY-NC-ND), przesłane przez użytkownika markus lilje",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Acanthiza cinerea"
+  },
+  {
+    "CommonName": "Papuan Thornbill",
+    "ScientificName": "Acanthiza murina",
+    "Family": "Acanthizidae (Thornbills and Allies)",
+    "RangeInfo": "New guinea (snow mountains to owen stanley range)",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/3089678/medium.jpg",
+    "SpeciesDescription": "The <b>New Guinea thornbill</b> or <b>Papuan thornbill</b> (<i>Acanthiza murina</i>) is a species of bird in the family Acanthizidae. It is found in the New Guinea Highlands.",
+    "ImageAttribution": "(c) Nigel Voaden, niektóre prawa zastrzeżone (CC BY)",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Acanthiza murina"
+  },
+  {
+    "CommonName": "Yellow Thornbill",
+    "ScientificName": "Acanthiza nana",
+    "Family": "Acanthizidae (Thornbills and Allies)",
+    "RangeInfo": "This birds are found mainly within temperate and semi-arid areas, with their range just extending into the subtropical...",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/182291/medium.jpg",
+    "SpeciesDescription": "The <b>yellow thornbill</b> (<i>Acanthiza nana</i>) is a passerine bird usually found in Australia. It is protected under the National Parks and Wildlife Act, 1974.",
+    "ImageAttribution": "(c) Tom Tarrant, some rights reserved (CC BY-NC-SA)",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Acanthiza nana"
+  },
+  {
+    "CommonName": "Tasmanian Thornbill",
+    "ScientificName": "Acanthiza ewingii",
+    "Family": "Acanthizidae (Thornbills and Allies)",
+    "RangeInfo": "The ___ is endemic to Tasmania and the Bass Strait Islands and is a common resident of rainforests, wet fores...",
+    "ImageUrl": "https://static.inaturalist.org/photos/339909020/medium.jpg",
+    "SpeciesDescription": "The <b>Tasmanian thornbill</b> (<i>Acanthiza ewingii</i>) is a small brown bird only found in Tasmania and the islands in the Bass Strait. It is a common bird in these regions, often found in rainforests, wet forests, and scrublands. It occurs exclusively in cold and wet areas. Its diet revolves primarily around small insects, which it scrounges up and feeds on close to the ground.",
+    "ImageAttribution": "(c) thepicturetaker, all rights reserved",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Acanthiza ewingii"
+  },
+  {
+    "CommonName": "Mountain Thornbill",
+    "ScientificName": "Acanthiza katherina",
+    "Family": "Acanthizidae (Thornbills and Allies)",
+    "RangeInfo": "Rainforest of northeastern queensland (cooktown to paluma range)",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/261819682/medium.jpg",
+    "SpeciesDescription": "The <b>mountain thornbill</b> (<i>Acanthiza katherina</i>) is a species of bird in the family Acanthizidae. It is endemic to Australia.",
+    "ImageAttribution": "(c) Steve Murray, niektóre prawa zastrzeżone (CC BY-NC), przesłane przez użytkownika Steve Murray",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Acanthiza katherina"
+  },
+  {
+    "CommonName": "Slaty-backed Thornbill",
+    "ScientificName": "Acanthiza robustirostris",
+    "Family": "Acanthizidae (Thornbills and Allies)",
+    "RangeInfo": "Mulga areas of central western australia to south-central queensland",
+    "ImageUrl": "https://static.inaturalist.org/photos/10105370/medium.jpg",
+    "SpeciesDescription": "The <b>slaty-backed thornbill</b> (<i>Acanthiza robustirostris</i>) is a species of bird in the family Acanthizidae. It is endemic to Australia.",
+    "ImageAttribution": "(c) Chris Benesh, all rights reserved, uploaded by Chris Benesh",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Acanthiza robustirostris"
+  },
+  {
+    "CommonName": "Slender-billed Thornbill",
+    "ScientificName": "Acanthiza iredalei",
+    "Family": "Acanthizidae (Thornbills and Allies)",
+    "RangeInfo": "The ___ iredalei subspecies has six separate and isolated populations in Western Australia, and a large ...",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/231810680/medium.jpg",
+    "SpeciesDescription": "The <b>slender-billed thornbill</b> (<i>Acanthiza iredalei</i>) is a small bird native to Australia. It includes three separate sub-species:",
+    "ImageAttribution": "(c) Tom Hunt, some rights reserved (CC BY-NC), uploaded by Tom Hunt",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Acanthiza iredalei"
+  },
+  {
+    "CommonName": "Chestnut-rumped Thornbill",
+    "ScientificName": "Acanthiza uropygialis",
+    "Family": "Acanthizidae (Thornbills and Allies)",
+    "RangeInfo": "Arid and semiarid interior of southern australia; to coast in west",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/182285/medium.jpg",
+    "SpeciesDescription": "The <b>chestnut-rumped thornbill</b> (<i>Acanthiza uropygialis</i>) is a small passerine bird in the family Acanthizidae, endemic to Australia.",
+    "ImageAttribution": "(c) David Cook, some rights reserved (CC BY-NC)",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Acanthiza uropygialis"
+  },
+  {
+    "CommonName": "Western Thornbill",
+    "ScientificName": "Acanthiza inornata",
+    "Family": "Acanthizidae (Thornbills and Allies)",
+    "RangeInfo": "Southwestern western australia",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/181279791/medium.jpeg",
+    "SpeciesDescription": "The <b>western thornbill</b> (<i>Acanthiza inornata</i>) is a species of bird in the family Acanthizidae. It is endemic to southwestern Australia.",
+    "ImageAttribution": "(c) Jordan M, some rights reserved (CC BY-NC), uploaded by Jordan M",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Acanthiza inornata"
+  },
+  {
+    "CommonName": "Buff-rumped Thornbill",
+    "ScientificName": "Acanthiza reguloides",
+    "Family": "Acanthizidae (Thornbills and Allies)",
+    "RangeInfo": "Primarily distributed in eastern Australia, the ___'s range spans from Chinchilla, Queensland, west to Coba...",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/231811254/medium.jpg",
+    "SpeciesDescription": "The <b>buff-rumped thornbill</b> (<i>Acanthiza reguloides</i>) is a species of thornbill found in open forest land in east Australia, specifically around Sydney, south of Chinchilla and east of Cobar in an area of 1,000,000–10,000,000 km². The buff-rumped thornbill is found in temperate or subtropical/tropical moist environments living and feeding amidst the ground foliage, hence the term \"buff-rump\". However they are known to prefer nesting sites in areas above ground level, particularly amongst the bark of trees, one to",
+    "ImageAttribution": "(c) Tom Hunt, some rights reserved (CC BY-NC), uploaded by Tom Hunt",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Acanthiza reguloides"
+  },
+  {
+    "CommonName": "Biak Gerygone",
+    "ScientificName": "Gerygone hypoxantha",
+    "Family": "Acanthizidae (Thornbills and Allies)",
+    "RangeInfo": "Biak (cenderawasih bay, off northwestern new guinea)",
+    "ImageUrl": "https://static.inaturalist.org/photos/54224986/medium.jpg",
+    "SpeciesDescription": "The <b>Biak gerygone</b> (<i>Gerygone magnirostris hypoxantha</i>) is a subspecies of the large-billed gerygone, but it is sometimes considered a distinct species. It is endemic to West Papua, Indonesia.",
+    "ImageAttribution": "(c) David Beadle, wszelkie prawa zastrzeżone, przesłane przez użytkownika David Beadle",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Gerygone hypoxantha"
+  },
+  {
+    "CommonName": "Plain Gerygone",
+    "ScientificName": "Gerygone inornata",
+    "Family": "Acanthizidae (Thornbills and Allies)",
+    "RangeInfo": "Lesser sundas (sawu, rote, timor, and wetar)",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/49381984/medium.jpeg",
+    "SpeciesDescription": "The <b>plain gerygone</b> (<i>Gerygone inornata</i>) is a species of bird in the family Acanthizidae. It is found in Timor and nearby islands. Its natural habitats are subtropical or tropical moist lowland forest and subtropical or tropical mangrove forest.",
+    "ImageAttribution": "(c) Yovie Jehabut, niektóre prawa zastrzeżone (CC BY-NC), przesłane przez użytkownika Yovie Jehabut",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Gerygone inornata"
+  },
+  {
+    "CommonName": "Rennell Gerygone",
+    "ScientificName": "Gerygone citrina",
+    "Family": "Acanthizidae (Thornbills and Allies)",
+    "RangeInfo": "Rennell (southeastern solomon islands)",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/2881376/medium.jpg",
+    "SpeciesDescription": "The <b>Rennell gerygone</b> (<i><b>Gerygone citrina</b></i>) is a species of bird in the family Acanthizidae. It lives on Rennell Island. It was formerly considered a subspecies of the fan-tailed gerygone (<i>Gerygone flavolateralis</i>), but was split as a distinct species by the International Ornithologists' Union in 2021.",
+    "ImageAttribution": "(c) Tony Morris, some rights reserved (CC BY-NC)",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Gerygone citrina"
+  },
+  {
+    "CommonName": "Norfolk Island Gerygone",
+    "ScientificName": "Gerygone modesta",
+    "Family": "Acanthizidae (Thornbills and Allies)",
+    "RangeInfo": "Norfolk island",
+    "ImageUrl": "https://static.inaturalist.org/photos/284791397/medium.jpg",
+    "SpeciesDescription": "The <b>Norfolk gerygone</b> (<i>Gerygone modesta</i>) is a species of bird in the family Acanthizidae. It is endemic to Norfolk Island.",
+    "ImageAttribution": "(c) Bob Edgar, wszelkie prawa zastrzeżone, przesłane przez użytkownika Bob Edgar",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Gerygone modesta"
+  },
+  {
+    "CommonName": "Gray Gerygone",
+    "ScientificName": "Gerygone igata",
+    "Family": "Acanthizidae (Thornbills and Allies)",
+    "RangeInfo": "Mainland new zealand and adjacent offshore islands",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/463497953/medium.jpg",
+    "SpeciesDescription": "The <b>grey warbler</b> (<i>Gerygone igata</i>), also known by its Māori name <b>riroriro</b>, is an insectivorous bird in the family Acanthizidae endemic to New Zealand. Its natural habitat is temperate forests. It is sometimes known as the <i>grey gerygone</i>, <i>teetotum</i> and <i>rainbird.</i>",
+    "ImageAttribution": "(c) Caiden Binzegger, some rights reserved (CC BY-NC), uploaded by Caiden Binzegger",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Gerygone igata"
+  },
+  {
+    "CommonName": "Chatham Islands Gerygone",
+    "ScientificName": "Gerygone albofrontata",
+    "Family": "Acanthizidae (Thornbills and Allies)",
+    "RangeInfo": "Chatham islands (new zealand)",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/178291628/medium.jpg",
+    "SpeciesDescription": "The <b>Chatham gerygone</b> or <b>Chatham Island warbler</b> (<i>Gerygone albofrontata</i>) is a species of bird in the family Acanthizidae. It is endemic to the Chatham Islands and thus not found on the mainland, where its relative, the endemic grey warbler (Gerygone igata), is found. The Chatham Island warbler is larger and sports different plumage for the male, female and juvenile birds. Both warblers were discovered and named by G. R. Gray in 1845. The grey and Chatham...",
+    "ImageAttribution": "(c) Oscar Thomas, niektóre prawa zastrzeżone (CC BY-NC-ND), przesłane przez użytkownika Oscar Thomas",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Gerygone albofrontata"
+  },
+  {
+    "CommonName": "African Cuckoo-Hawk",
+    "ScientificName": "Aviceda cuculoides",
+    "Family": "Accipitridae (Hawks, Eagles, and Kites)",
+    "RangeInfo": "The ___ is found across much of sub-Saharan Africa, and the following subspecies are recognised: A. c. subsp....",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/110221200/medium.jpg",
+    "SpeciesDescription": "The <b>African cuckoo-hawk</b>, or <b>African baza</b>, (<i>Aviceda cuculoides</i>) is a medium-sized raptor in the family Accipitridae so named because it resembles the common cuckoo, which is found in sub-Saharan Africa and along the eastern parts of Southern Africa. It prefers dense woodland and forest of either indigenous or exotic trees.",
+    "ImageAttribution": "(c) Steve Garvie, some rights reserved (CC BY-NC-SA)",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Aviceda cuculoides"
+  },
+  {
+    "CommonName": "African Fish-Eagle",
+    "ScientificName": "Icthyophaga vocifer",
+    "Family": "Accipitridae (Hawks, Eagles, and Kites)",
+    "RangeInfo": "Sub-saharan africa",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/9725937/medium.jpg",
+    "SpeciesDescription": "The <b>African fish eagle</b> (<i><b>Icthyophaga vocifer</b></i>) or the <b>African sea eagle</b> is a large species of eagle found throughout sub-Saharan Africa wherever large bodies of open water with an abundant food supply occur. It is the national bird of Malawi, Namibia, Zambia, and Zimbabwe. As a result of its large range, it is known in many languages. Examples of names include: Vis Arend in Afrikaans, <i>nkwazi</i> in Chewa, <i>aigle pêcheur</i> in French, <i>hungwe</i> in Shona, <i>inkwazi</i>...",
+    "ImageAttribution": "(c) markus lilje, some rights reserved (CC BY-NC-ND), uploaded by markus lilje",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Icthyophaga vocifer"
+  },
+  {
+    "CommonName": "African Harrier-Hawk",
+    "ScientificName": "Polyboroides typus",
+    "Family": "Accipitridae (Hawks, Eagles, and Kites)",
+    "RangeInfo": "This birds are a common raptorial species south of the Sahara being most commonly found in the tropical regions of...",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/1932846/medium.jpg",
+    "SpeciesDescription": "The <b>African harrier-hawk</b>, <b>harrier hawk</b>, or <b>gymnogene</b> (<i>Polyboroides typus</i>) is a bird of prey. It is about 60–66 cm in length, and is related to the harriers. It breeds in most of Africa south of the Sahara. The only other member of the genus is the allopatric Madagascan harrier-hawk (<i>Polyboroides radiatus</i>).",
+    "ImageAttribution": "(c) Paul Cools, some rights reserved (CC BY-NC), uploaded by Paul Cools",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Polyboroides typus"
+  },
+  {
+    "CommonName": "African Hawk-Eagle",
+    "ScientificName": "Aquila spilogaster",
+    "Family": "Accipitridae (Hawks, Eagles, and Kites)",
+    "RangeInfo": "Woodland and savanna of sub-saharan africa",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/23206296/medium.jpeg",
+    "SpeciesDescription": "The <b>African hawk-eagle</b> (<i>Aquila spilogaster</i>) is a large bird of prey. Like all eagles, it belongs to the family <i>Accipitridae</i>. The African hawk-eagle breeds in tropical Sub-Saharan Africa. It is a bird of wooded hills, building a stick nest about 3 feet (almost 1 metre) in diameter in the fork of a large tree. The clutch is generally one or two eggs. The African hawk-eagle hunts small mammals, reptiles, and birds. The call is a shrill...",
+    "ImageAttribution": "(c) copper, some rights reserved (CC BY-NC), uploaded by copper",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Aquila spilogaster"
+  },
+  {
+    "CommonName": "African Marsh Harrier",
+    "ScientificName": "Circus ranivorus",
+    "Family": "Accipitridae (Hawks, Eagles, and Kites)",
+    "RangeInfo": "Marshes and grassland of eastern and southern africa",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/152976459/medium.jpeg",
+    "SpeciesDescription": "The <b>African marsh harrier</b> (<i>Circus ranivorus</i>) is a bird of prey belonging to the harrier genus <i>Circus</i>. It is largely resident in wetland habitats in southern, central and eastern Africa from South Africa north to South Sudan.",
+    "ImageAttribution": "(c) magdastlucia, some rights reserved (CC BY-NC), uploaded by magdastlucia",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Circus ranivorus"
+  },
+  {
+    "CommonName": "American Goshawk",
+    "ScientificName": "Astur atricapillus",
+    "Family": "Accipitridae (Hawks, Eagles, and Kites)",
+    "RangeInfo": "American and Eurasian goshawks can be found in both deciduous and coniferous forests. While the species might show strong reg...",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/12651287/medium.jpeg",
+    "SpeciesDescription": "The <b>American goshawk</b> (<i><b>Astur atricapillus</b></i>) is a species of raptor in the family Accipitridae. It was first described by Alexander Wilson in 1812. The American goshawk was previously considered conspecific with the Eurasian goshawk but was assigned to a separate species in 2023 based on differences in morphology, vocalizations, and genetic divergence. It was formerly placed in the genus <i>Accipiter</i>. It is mainly resident, but birds from colder regions migrate south for the winter. In North...",
+    "ImageAttribution": "(c) psweet, some rights reserved (CC BY-SA), uploaded by psweet",
+    "InfoUrl": "https://en.wikipedia.org/wiki/American_goshawk"
+  },
+  {
+    "CommonName": "Andaman Serpent-Eagle",
+    "ScientificName": "Spilornis elgini",
+    "Family": "Accipitridae (Hawks, Eagles, and Kites)",
+    "RangeInfo": "Forest of andaman islands",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/13276623/medium.jpg",
+    "SpeciesDescription": "The <b>Andaman serpent eagle</b> (<i>Spilornis elgini</i>) is a species of bird of prey in the family Accipitridae. It is endemic to the Andaman Islands in southeast India.",
+    "ImageAttribution": "(c) Albinjacob, some rights reserved (CC BY-SA)",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Spilornis elgini"
+  },
+  {
+    "CommonName": "Ayres's Hawk-Eagle",
+    "ScientificName": "Hieraaetus ayresii",
+    "Family": "Accipitridae (Hawks, Eagles, and Kites)",
+    "RangeInfo": "Woodland and savanna of sub-saharan africa",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/9803945/medium.jpeg",
+    "SpeciesDescription": "<b>Ayres's hawk-eagle</b> (<i>Hieraaetus ayresii</i>), also referred to as <b>Ayres' eagle</b>, is a medium-sized bird of prey in the family Accipitridae. It is native to African woodlands. Its name honors South African ornithologist Thomas Ayres.",
+    "ImageAttribution": "(c) markus lilje, some rights reserved (CC BY-NC-ND), uploaded by markus lilje",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Hieraaetus ayresii"
+  },
+  {
+    "CommonName": "Bald Eagle",
+    "ScientificName": "Haliaeetus leucocephalus",
+    "Family": "Accipitridae (Hawks, Eagles, and Kites)",
+    "RangeInfo": "The ___ occurs during its breeding season in virtually any kind of American wetland habitat such as seacoasts, rivers,...",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/349074095/medium.jpeg",
+    "SpeciesDescription": "The <b>bald eagle</b> (<i>Haliaeetus leucocephalus</i>, from Greek <i>hali</i> \"sea\", <i>aiētos</i> \"eagle\", <i>leuco</i> \"white\", <i>cephalos</i> \"head\") is a bird of prey found in North America. A sea eagle, it has two known subspecies and forms a species pair with the white-tailed eagle (<i>Haliaeetus albicilla</i>). Its range includes most of Canada and Alaska, all of the contiguous United States, and northern Mexico. It is found near large bodies of open water with an abundant food supply and old-growth...",
+    "ImageAttribution": "(c) Glenn Perelson, some rights reserved (CC BY-NC), uploaded by Glenn Perelson",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Haliaeetus leucocephalus"
+  },
+  {
+    "CommonName": "Barred Hawk",
+    "ScientificName": "Morphnarchus princeps",
+    "Family": "Accipitridae (Hawks, Eagles, and Kites)",
+    "RangeInfo": "Montane forest of costa rica to colombia and northern ecuador",
+    "ImageUrl": "https://static.inaturalist.org/photos/13828260/medium.jpg",
+    "SpeciesDescription": "The <b>barred hawk</b> (<i>Morphnarchus princeps</i>) is a species of bird of prey in the family Accipitridae. It has also been known as the <b>black-chested hawk</b>.",
+    "ImageAttribution": "(c) Peter Hoell, all rights reserved, uploaded by Peter Hoell",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Morphnarchus princeps"
+  },
+  {
+    "CommonName": "Bateleur",
+    "ScientificName": "Terathopius ecaudatus",
+    "Family": "Accipitridae (Hawks, Eagles, and Kites)",
+    "RangeInfo": "Savanna and thornscrub of sub-saharan africa",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/261340111/medium.jpg",
+    "SpeciesDescription": "The <b>Bateleur</b> (<i>Terathopius ecaudatus</i>) is a medium-sized eagle in the family Accipitridae. Its closest relatives are the snake eagles. It is the only member of the genus <i>Terathopius</i> and may be the origin of the \"Zimbabwe Bird\", the national emblem of Zimbabwe. It is endemic to Africa and small parts of Arabia. \"<i>Bateleur</i>\" is French for \"street performer\".",
+    "ImageAttribution": "(c) Wayne and Pam Osborn, some rights reserved (CC BY-NC), uploaded by Wayne and Pam Osborn",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Terathopius ecaudatus"
+  },
+  {
+    "CommonName": "Beaudouin's Snake-Eagle",
+    "ScientificName": "Circaetus beaudouini",
+    "Family": "Accipitridae (Hawks, Eagles, and Kites)",
+    "RangeInfo": "Southwestern mauritania southward to guinea, eastward to southwestern sudan and western south sudan, possibly to northern uganda",
+    "ImageUrl": "https://inaturalist-open-data.s3.amazonaws.com/photos/789101/medium.jpg",
+    "SpeciesDescription": "<b>Beaudouin's snake eagle</b> (<i>Circaetus beaudouini</i>) is a species of snake eagle in the Accipitridae family found in the Sahel region of west Africa. It forms a superspecies with the Palearctic short-toed snake eagle <i>Circaetus gallicus</i> and the black-chested snake eagle <i>Circaetus pectoralis</i>. This bird seems to be declining in numbers and the International Union for Conservation of Nature has rated it as a \"vulnerable species\".",
+    "ImageAttribution": "(c) Allan Hopkins, some rights reserved (CC BY-NC-ND)",
+    "InfoUrl": "https://en.wikipedia.org/wiki/Circaetus beaudouini"
+  }
+]
