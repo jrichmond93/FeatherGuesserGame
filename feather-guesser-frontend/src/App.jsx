@@ -11,6 +11,18 @@ function App() {
   const [page, setPage] = useState("home");
   const [mode, setMode] = useState("normal"); // "normal" or "reverse"
   const [lastScore, setLastScore] = useState(null);
+  const [removeWrongAnswers, setRemoveWrongAnswers] = useState(() => {
+    // Persist setting in localStorage
+    const stored = localStorage.getItem("removeWrongAnswers");
+    return stored === null ? false : stored === "true";
+  });
+
+  const handleToggleRemoveWrongAnswers = () => {
+    setRemoveWrongAnswers((prev) => {
+      localStorage.setItem("removeWrongAnswers", !prev);
+      return !prev;
+    });
+  };
 
   if (page === "howtoplay") {
     return <HowToPlay 
@@ -26,14 +38,24 @@ function App() {
         onBack={() => setPage("home")}
         setPage={setPage}
         currentMode={mode}
+        removeWrongAnswers={removeWrongAnswers}
+        onToggleRemoveWrongAnswers={handleToggleRemoveWrongAnswers}
       />
     );
   }
   if (page === "question") {
-    return <QuestionPage onEndGame={score => { setLastScore(score); setPage("end"); }} onQuit={() => setPage("home")} />;
+    return <QuestionPage 
+      onEndGame={score => { setLastScore(score); setPage("end"); }} 
+      onQuit={() => setPage("home")} 
+      removeWrongAnswers={removeWrongAnswers}
+    />;
   }
   if (page === "reverse-question") {
-    return <ReverseQuestionPage onEndGame={score => { setLastScore(score); setPage("end"); }} onQuit={() => setPage("home")} />;
+    return <ReverseQuestionPage 
+      onEndGame={score => { setLastScore(score); setPage("end"); }} 
+      onQuit={() => setPage("home")} 
+      removeWrongAnswers={removeWrongAnswers}
+    />;
   }
   if (page === "end") {
     return <EndOfGame

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Typography, Button, Stack, Box } from "@mui/material";
+import featherImg from "../../public/feather.png";
 import CenteredPage from "../components/CenteredPage";
 
 // Simple burst animation for emojis
@@ -76,6 +77,16 @@ export default function EndOfGame({ score, maxScore, onPlayAgain, onHome }) {
         <Typography variant="body1" sx={{ mb: 3, fontSize: 18 }}>
           {getMessage(score)}
         </Typography>
+
+        {/* Feather image */}
+        <Box sx={{ width: 80, height: 80, mb: 1 }}>
+          <img
+            src={featherImg}
+            alt="Feather"
+            style={{ width: '100%', height: '100%', objectFit: 'contain', opacity: 0.85 }}
+            draggable={false}
+          />
+        </Box>
         <Stack direction="row" spacing={2} justifyContent="center">
           <Button variant="contained" color="primary" onClick={onPlayAgain} sx={{ fontWeight: 600, fontSize: 16, borderRadius: 2 }}>
             Play Again

@@ -1,4 +1,6 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { getRandomIncorrectResponse } from "../utils/incorrectResponses";
+import { getRandomCorrectResponse } from "../utils/correctResponses";
 import {
   Typography,
   Stack,
@@ -6,7 +8,11 @@ import {
   LinearProgress,
   CardMedia,
   Box,
+  Fade,
+  Tooltip,
+  IconButton,
 } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 import CenteredPage from "../components/CenteredPage";
 
 function shuffle(array) {
@@ -18,22 +24,60 @@ function shuffle(array) {
   return arr;
 }
 
-const QUESTION_TIME = 20;
+const QUESTION_TIME = 30;
 const REVEAL_TIME = 8;
 const QUESTIONS_PER_GAME = 10;
 
-export default function ReverseQuestionPage({ onEndGame, onQuit }) {
+export default function ReverseQuestionPage(props) {
+  // All useState hooks first!
   const [birds, setBirds] = useState([]);
   const [loading, setLoading] = useState(true);
   const [questionIdx, setQuestionIdx] = useState(0);
   const [score, setScore] = useState(0);
   const [timer, setTimer] = useState(QUESTION_TIME);
+  const [incorrectMsg, setIncorrectMsg] = useState("");
+  const [correctMsg, setCorrectMsg] = useState("");
   const [showAnswer, setShowAnswer] = useState(false);
   const [selected, setSelected] = useState(null);
   const [choices, setChoices] = useState([]);
   const [gameQuestions, setGameQuestions] = useState([]);
   const [showInfo, setShowInfo] = useState(false);
+  const [removedIndexes, setRemovedIndexes] = useState([]);
+  const [removalTimers, setRemovalTimers] = useState({});
   const timerRef = useRef();
+
+
+  // Remove wrong answers timer logic (fix: always reset on new choices)
+  useEffect(() => {
+    setRemovedIndexes([]);
+    Object.values(removalTimers).forEach(clearTimeout);
+    setRemovalTimers({});
+    if (props.removeWrongAnswers && choices.length > 0) {
+      let timers = {};
+      timers.first = setTimeout(() => {
+        removeOneWrong();
+      }, 10000);
+      timers.second = setTimeout(() => {
+        removeOneWrong();
+      }, 20000);
+      setRemovalTimers(timers);
+    }
+    // eslint-disable-next-line
+  }, [choices, props.removeWrongAnswers]);
+
+  function removeOneWrong() {
+    const correctIdx = choices.findIndex(b => b.CommonName === current.CommonName);
+    const wrongIndexes = choices
+      .map((c, idx) => idx)
+      .filter(idx => idx !== correctIdx && !removedIndexes.includes(idx));
+    if (wrongIndexes.length === 0) return;
+    const toRemove = wrongIndexes[Math.floor(Math.random() * wrongIndexes.length)];
+    setRemovedIndexes(prev => [...prev, toRemove]);
+  }
+
+  useEffect(() => {
+    if (showAnswer) setRemovedIndexes([]);
+  }, [showAnswer]);
 
   useEffect(() => {
     fetch("/birds.json")
@@ -69,7 +113,7 @@ export default function ReverseQuestionPage({ onEndGame, onQuit }) {
         if (questionIdx < QUESTIONS_PER_GAME - 1) {
           setQuestionIdx(q => q + 1);
         } else {
-          if (onEndGame) onEndGame(score);
+          if (props.onEndGame) props.onEndGame(score);
         }
         return;
       }
@@ -82,14 +126,14 @@ export default function ReverseQuestionPage({ onEndGame, onQuit }) {
     }
     timerRef.current = setTimeout(() => setTimer(t => t - 1), 1000);
     return () => clearTimeout(timerRef.current);
-  }, [timer, showAnswer, questionIdx, showInfo, score, onEndGame]);
+  }, [timer, showAnswer, questionIdx, showInfo, score, props.onEndGame]);
 
   function handleNext() {
     setShowInfo(false);
     if (questionIdx < QUESTIONS_PER_GAME - 1) {
       setQuestionIdx(q => q + 1);
     } else {
-      if (onEndGame) onEndGame(score);
+      if (props.onEndGame) props.onEndGame(score);
     }
   }
 
@@ -113,21 +157,29 @@ export default function ReverseQuestionPage({ onEndGame, onQuit }) {
     setSelected(idx);
     setShowAnswer(true);
     setTimer(REVEAL_TIME);
-    if (idx === correctIdx) setScore(s => s + 1);
+    if (idx === correctIdx) {
+      setScore(s => s + 1);
+      setCorrectMsg(getRandomCorrectResponse());
+      setIncorrectMsg("");
+    } else {
+      setIncorrectMsg(getRandomIncorrectResponse());
+      setCorrectMsg("");
+    }
   }
 
   return (
     <CenteredPage>
       <Box sx={{ position: 'fixed', top: 16, right: 24, zIndex: 10 }}>
-        <Button
-          size="small"
-          variant="outlined"
-          color="error"
-          onClick={() => onQuit && onQuit()}
-          sx={{ minWidth: 0, px: 1.5, fontSize: 13, fontWeight: 500, borderRadius: 2 }}
-        >
-          Quit
-        </Button>
+        <Tooltip title="Quit Game">
+          <IconButton
+            color="error"
+            size="large"
+            onClick={() => props.onQuit && props.onQuit()}
+            sx={{ bgcolor: "#fff", boxShadow: 1, ":hover": { bgcolor: "#ffeaea" } }}
+          >
+            <CloseIcon />
+          </IconButton>
+        </Tooltip>
       </Box>
       <Stack spacing={2} alignItems="center" sx={{ width: '100%' }}>
         <Stack direction="row" width="100%" justifyContent="space-between" alignItems="center">
@@ -197,73 +249,98 @@ export default function ReverseQuestionPage({ onEndGame, onQuit }) {
                 sx={{ height: 10, borderRadius: 5, mb: 1, bgcolor: "#e0f2f1", '& .MuiLinearProgress-bar': { bgcolor: showAnswer ? (selected === correctIdx ? "#388e3c" : "#d32f2f") : "#388e3c" } }}
               />
               <Typography align="center" fontWeight={600} color={showAnswer ? (selected === correctIdx ? "#388e3c" : "#d32f2f") : "#2e7d32"}>
-                {showAnswer ? (selected === null ? "Time's up!" : selected === correctIdx ? "Correct!" : "Incorrect") : `${timer} seconds`}
+                {showAnswer
+                  ? selected === null
+                    ? "Time's up!"
+                    : selected === correctIdx
+                      ? correctMsg || "Correct!"
+                      : incorrectMsg || "Incorrect"
+                  : `${timer} seconds`}
               </Typography>
             </Box>
             <Box width="100%" sx={{ mt: 2 }}>
               <Stack direction="row" spacing={2} width="100%" justifyContent="center" alignItems="center">
-                {choices.slice(0,2).map((bird, idx) => (
-                  <Button
-                    key={bird.ImageUrl}
-                    onClick={() => handleAnswer(idx)}
-                    disabled={showAnswer}
-                    sx={{
-                      p: 0,
-                      border: showAnswer ? (idx === correctIdx ? "2px solid #388e3c" : idx === selected ? "2px solid #d32f2f" : "2px solid #e0e0e0") : "2px solid #e0e0e0",
-                      borderRadius: 3,
-                      overflow: 'hidden',
-                      minWidth: 0,
-                      width: { xs: 140, sm: 180 },
-                      height: { xs: 120, sm: 150 },
-                      boxShadow: showAnswer && idx === correctIdx ? 6 : 2,
-                      bgcolor: showAnswer && idx === correctIdx ? "#c8e6c9" : undefined,
-                    }}
-                  >
-                    <CardMedia
-                      component="img"
-                      image={bird.ImageUrl}
-                      alt={bird.CommonName}
-                      sx={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        objectPosition: 'center top',
-                      }}
-                    />
-                  </Button>
-                ))}
+                {choices.slice(0,2).map((bird, idx) => {
+                  const isRemoved = removedIndexes.includes(idx);
+                  return (
+                    <Fade in={!isRemoved} key={bird.ImageUrl} timeout={500}>
+                      <div>
+                        <Button
+                          onClick={() => handleAnswer(idx)}
+                          disabled={showAnswer || isRemoved}
+                          sx={{
+                            p: 0,
+                            border: showAnswer ? (idx === correctIdx ? "4px solid #43a047" : idx === selected ? "2px solid #d32f2f" : "2px solid #e0e0e0") : "2px solid #e0e0e0",
+                            borderRadius: 3,
+                            overflow: 'hidden',
+                            minWidth: 0,
+                            width: { xs: 140, sm: 180 },
+                            height: { xs: 120, sm: 150 },
+                            boxShadow: showAnswer && idx === correctIdx ? '0 0 0 4px #a5d6a7, 0 0 16px 4px #43a04788' : 2,
+                            bgcolor: showAnswer && idx === correctIdx ? "#e8f5e9" : undefined,
+                            opacity: isRemoved ? 0.3 : 1,
+                            filter: isRemoved ? "grayscale(1)" : undefined,
+                            transition: "opacity 0.5s, background 0.5s, box-shadow 0.5s, border 0.5s",
+                          }}
+                        >
+                          <CardMedia
+                            component="img"
+                            image={bird.ImageUrl}
+                            alt={bird.CommonName}
+                            sx={{
+                              width: '100%',
+                              height: '100%',
+                              objectFit: 'cover',
+                              objectPosition: 'center top',
+                            }}
+                          />
+                        </Button>
+                      </div>
+                    </Fade>
+                  );
+                })}
               </Stack>
               <Stack direction="row" spacing={2} width="100%" justifyContent="center" alignItems="center" sx={{ mt: 2 }}>
-                {choices.slice(2,4).map((bird, idx) => (
-                  <Button
-                    key={bird.ImageUrl}
-                    onClick={() => handleAnswer(idx+2)}
-                    disabled={showAnswer}
-                    sx={{
-                      p: 0,
-                      border: showAnswer ? ((idx+2) === correctIdx ? "2px solid #388e3c" : (idx+2) === selected ? "2px solid #d32f2f" : "2px solid #e0e0e0") : "2px solid #e0e0e0",
-                      borderRadius: 3,
-                      overflow: 'hidden',
-                      minWidth: 0,
-                      width: { xs: 140, sm: 180 },
-                      height: { xs: 120, sm: 150 },
-                      boxShadow: showAnswer && (idx+2) === correctIdx ? 6 : 2,
-                      bgcolor: showAnswer && (idx+2) === correctIdx ? "#c8e6c9" : undefined,
-                    }}
-                  >
-                    <CardMedia
-                      component="img"
-                      image={bird.ImageUrl}
-                      alt={bird.CommonName}
-                      sx={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        objectPosition: 'center top',
-                      }}
-                    />
-                  </Button>
-                ))}
+                {choices.slice(2,4).map((bird, idx) => {
+                  const realIdx = idx + 2;
+                  const isRemoved = removedIndexes.includes(realIdx);
+                  return (
+                    <Fade in={!isRemoved} key={bird.ImageUrl} timeout={500}>
+                      <div>
+                        <Button
+                          onClick={() => handleAnswer(realIdx)}
+                          disabled={showAnswer || isRemoved}
+                          sx={{
+                            p: 0,
+                            border: showAnswer ? (realIdx === correctIdx ? "4px solid #43a047" : realIdx === selected ? "2px solid #d32f2f" : "2px solid #e0e0e0") : "2px solid #e0e0e0",
+                            borderRadius: 3,
+                            overflow: 'hidden',
+                            minWidth: 0,
+                            width: { xs: 140, sm: 180 },
+                            height: { xs: 120, sm: 150 },
+                            boxShadow: showAnswer && realIdx === correctIdx ? '0 0 0 4px #a5d6a7, 0 0 16px 4px #43a04788' : 2,
+                            bgcolor: showAnswer && realIdx === correctIdx ? "#e8f5e9" : undefined,
+                            opacity: isRemoved ? 0.3 : 1,
+                            filter: isRemoved ? "grayscale(1)" : undefined,
+                            transition: "opacity 0.5s, background 0.5s, box-shadow 0.5s, border 0.5s",
+                          }}
+                        >
+                          <CardMedia
+                            component="img"
+                            image={bird.ImageUrl}
+                            alt={bird.CommonName}
+                            sx={{
+                              width: '100%',
+                              height: '100%',
+                              objectFit: 'cover',
+                              objectPosition: 'center top',
+                            }}
+                          />
+                        </Button>
+                      </div>
+                    </Fade>
+                  );
+                })}
               </Stack>
             </Box>
             <Stack direction="row" spacing={2} width="100%" sx={{ mt: 2, minHeight: 48 }}>

@@ -1,8 +1,8 @@
 import React from "react";
-import { Typography, Stack, Button } from "@mui/material";
+import { Typography, Stack, Button, FormControlLabel, Switch, Box } from "@mui/material";
 import CenteredPage from "../components/CenteredPage";
 
-export default function Settings({ mode, onToggleMode, onBack, setPage, currentMode }) {
+export default function Settings({ mode, onToggleMode, onBack, setPage, currentMode, removeWrongAnswers, onToggleRemoveWrongAnswers }) {
   return (
     <CenteredPage>
       <Typography variant="h4" fontWeight={700} color="#388e3c" gutterBottom>
@@ -23,6 +23,20 @@ export default function Settings({ mode, onToggleMode, onBack, setPage, currentM
         <b>Normal:</b> Guess the bird from the photo.<br />
         <b>Reverse:</b> Guess the correct photo from the bird name.
       </Typography>
+      <FormControlLabel
+        control={
+          <Switch
+            checked={removeWrongAnswers}
+            onChange={onToggleRemoveWrongAnswers}
+            color="primary"
+          />
+        }
+        label="Remove Wrong Answers (after 10s & 20s)"
+        sx={{ mb: 3 }}
+      />
+      <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 3 }}>
+        <img src="/feather.png" alt="Feather" style={{ maxWidth: 120, width: '100%', opacity: 0.85 }} />
+      </Box>
       <Stack direction="row" spacing={2} sx={{ mt: 4, width: '100%' }} justifyContent="center">
         <Button
           variant="contained"

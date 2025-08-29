@@ -30,8 +30,8 @@ export default function CenteredPage({ children, paperSx = {}, shake = false, ..
       <Paper
         elevation={6}
         sx={{
-          p: { xs: 2, sm: 4 },
-          borderRadius: 4,
+          p: { xs: '10px 8px', sm: '24px 32px' }, // less vertical padding on mobile
+          borderRadius: { xs: 2, sm: 4 }, // smaller radius on mobile
           minWidth: 0,
           width: { xs: 360, sm: 420, md: 500 },
           maxWidth: { xs: 360, sm: 420, md: 500 },
