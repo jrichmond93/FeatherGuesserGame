@@ -1,13 +1,14 @@
 import { Stack, Button, Typography, IconButton, Box } from "@mui/material";
 import CenteredPage from "../components/CenteredPage";
 import ShareIcon from "@mui/icons-material/Share";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 export default function Home({ onHowToPlay, onSettings, onPlayNow }) {
   const [randomBird, setRandomBird] = useState(null);
+  const adRef = useRef(null);
   // Share App handler
   const handleShare = async () => {
     const shareData = {
-      title: "Feather Guesser",
+      title: "Feather Guess",
       text: "Try this fun bird guessing game!",
       url: window.location.origin,
     };
@@ -32,14 +33,23 @@ export default function Home({ onHowToPlay, onSettings, onPlayNow }) {
       });
   }, []);
 
+  // Google AdSense: trigger ad rendering
+  useEffect(() => {
+    if (window.adsbygoogle && adRef.current) {
+      try {
+        window.adsbygoogle.push({});
+      } catch (e) {}
+    }
+  }, []);
+
   return (
     <CenteredPage>
-      <Stack spacing={3} alignItems="center">
+      <Stack spacing={3} alignItems="center" sx={{ boxSizing: 'border-box', width: '100%' }}>
           <Typography variant="h4" fontWeight={700} color="#2e7d32" sx={{ fontSize: { xs: 24, sm: 32 } }}>
-            ID THE BIRD
+            FEATHER GUESS
           </Typography>
           <Typography variant="body1" color="text.secondary" align="center" sx={{ fontSize: { xs: 15, sm: 18 } }}>
-            Test your bird knowledge <br />Guess the species!
+            Test your bird knowledge <br />Guess the feather!
           </Typography>
           <Button
             variant="contained"
@@ -97,15 +107,22 @@ export default function Home({ onHowToPlay, onSettings, onPlayNow }) {
               </Typography>
             </Box>
           </Stack>
+          {/* Google AdSense Ad Unit */}
           <Box
             mt={2}
             width="100%"
             textAlign="center"
             sx={{ borderTop: "1px solid #e0e0e0", pt: 1 }}
           >
-            <Typography variant="caption" color="text.disabled">
-              Ad
-            </Typography>
+            <ins
+              className="adsbygoogle"
+              style={{ display: "block", minHeight: 70 }}
+              data-ad-client="ca-pub-9566952655833978"
+              data-ad-slot="YYYYYYYYYY"
+              data-ad-format="auto"
+              data-full-width-responsive="true"
+              ref={adRef}
+            ></ins>
           </Box>
       </Stack>
     </CenteredPage>
