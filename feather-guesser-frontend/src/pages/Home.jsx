@@ -39,7 +39,7 @@ export default function Home({ onHowToPlay, onSettings, onPlayNow }) {
             ID THE BIRD
           </Typography>
           <Typography variant="body1" color="text.secondary" align="center" sx={{ fontSize: { xs: 15, sm: 18 } }}>
-            Test your bird knowledge –<br />guess the species!
+            Test your bird knowledge <br />Guess the species!
           </Typography>
           <Button
             variant="contained"
