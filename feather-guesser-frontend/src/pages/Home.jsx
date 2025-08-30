@@ -85,10 +85,10 @@ export default function Home({ onHowToPlay, onSettings, onPlayNow }) {
               Settings
             </Button>
           </Stack>
-          <Stack direction="row" spacing={2} alignItems="center" width="100%" justifyContent="center">
+            <Stack direction="row" spacing={2} alignItems="center" width="100%" justifyContent="center" sx={{ minHeight: 220 }}>
             {randomBird && (
               <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mr: 2 }}>
-                <Box sx={{ width: 220, height: 220, borderRadius: 3, overflow: 'hidden', boxShadow: 2, bgcolor: '#e0f7fa', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Box sx={{ width: 270, height: 220, borderRadius: 3, overflow: 'hidden', boxShadow: 2, bgcolor: '#e0f7fa', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <img src={randomBird.ImageUrl} alt={randomBird.CommonName || "Bird"} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </Box>
                 {randomBird.CommonName && (
@@ -103,7 +103,30 @@ export default function Home({ onHowToPlay, onSettings, onPlayNow }) {
                 )}
               </Box>
             )}
-            <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center">
+            <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" sx={{ height: 220 }}>
+                <Button
+                  variant="outlined"
+                  size="small"
+                  sx={{
+                    mb: 1.5,
+                    fontWeight: 500,
+                    borderRadius: 2,
+                    fontSize: 14,
+                    width: 110,
+                    height: 60,
+                    bgcolor: "#fff",
+                    boxShadow: 1,
+                    ':hover': { bgcolor: "#e0f7fa" },
+                  }}
+                  onClick={async () => {
+                    const res = await fetch("/birds.json");
+                    const data = await res.json();
+                    const birdsWithImages = data.filter(b => b.ImageUrl);
+                    setRandomBird(birdsWithImages[Math.floor(Math.random() * birdsWithImages.length)]);
+                  }}
+                >
+                  Change Birds
+                </Button>
               <IconButton size="small" color="primary" onClick={handleShare}>
                 <ShareIcon fontSize="small" />
               </IconButton>

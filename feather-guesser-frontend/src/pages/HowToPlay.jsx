@@ -21,7 +21,7 @@ export default function HowToPlay({ onBack, onPlayNow }) {
             <li>Reverse Mode: Guess the bird image from a description snippet.</li>
             <li>Remove Wrong Answers: Incorrect answers will disappear as time elapses.</li>
           </ol>
-          <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', my: 3 }}>
+          <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', my: 1.2 }}>
             <img src="/feather.png" alt="Feather" style={{ maxWidth: 120, width: '100%', opacity: 0.85 }} />
           </Box>
         </Box>

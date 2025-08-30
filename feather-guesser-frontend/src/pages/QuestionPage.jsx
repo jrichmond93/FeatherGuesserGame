@@ -200,18 +200,17 @@ export default function QuestionPage({ onEndGame, onQuit, removeWrongAnswers = f
         </Stack>
         <Box
           sx={{
-            width: '100%',
-            height: { xs: 140, sm: 200, md: 240 },
-            minHeight: { xs: 140, sm: 200, md: 240 },
-            maxHeight: { xs: 140, sm: 200, md: 240 },
+            width: { xs: 220, sm: 300, md: 340 }, // Slightly wider, but still not full width
+            height: { xs: 180, sm: 240, md: 260 }, // Keep a near-square aspect
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             overflow: 'hidden',
             mb: 0.5,
             borderRadius: 2,
-            background: 'linear-gradient(135deg, #e0f7fa 0%, #c8e6c9 60%, #e8f5e9 100%)', // more green
+            background: 'linear-gradient(135deg, #e0f7fa 0%, #c8e6c9 60%, #e8f5e9 100%)',
             boxShadow: 2,
+            mx: 'auto',
           }}
         >
           <CardMedia
@@ -221,17 +220,17 @@ export default function QuestionPage({ onEndGame, onQuit, removeWrongAnswers = f
             sx={{
               width: '100%',
               height: '100%',
-              objectFit: 'contain',
-              objectPosition: 'center',
+              objectFit: 'cover', // revert to cover
+              objectPosition: 'center', // center the image
               borderRadius: 2,
               border: showAnswer
                 ? selected === correctIdx
                   ? "2px solid #388e3c"
                   : "2px solid #d32f2f"
                 : "2px solid #e0e0e0",
-              maxHeight: { xs: 140, sm: 200, md: 240 },
-              minHeight: { xs: 140, sm: 200, md: 240 },
               background: 'transparent',
+              maxHeight: '100%',
+              maxWidth: '100%',
             }}
           />
         </Box>
