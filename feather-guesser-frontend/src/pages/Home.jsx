@@ -2,6 +2,8 @@ import { Stack, Button, Typography, IconButton, Box } from "@mui/material";
 import CenteredPage from "../components/CenteredPage";
 import ShareIcon from "@mui/icons-material/Share";
 import React, { useState, useEffect, useRef } from "react";
+import featherImg from '/feather.png'; // Vite will resolve this from public
+
 export default function Home({ onHowToPlay, onSettings, onPlayNow }) {
   const [randomBird, setRandomBird] = useState(null);
   const adRef = useRef(null);
@@ -48,8 +50,15 @@ export default function Home({ onHowToPlay, onSettings, onPlayNow }) {
           <Typography variant="h4" fontWeight={700} color="#2e7d32" sx={{ fontSize: { xs: 24, sm: 32 } }}>
             FEATHER GUESS
           </Typography>
-          <Typography variant="body1" color="text.secondary" align="center" sx={{ fontSize: { xs: 15, sm: 18 } }}>
-            Test your bird knowledge <br />Guess the feather!
+          <Typography variant="body1" color="text.secondary" align="center" sx={{ fontSize: { xs: 15, sm: 18 }, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1 }}>
+            <span>
+              Test your bird knowledge <br />Guess the feather!
+            </span>
+            <img
+              src={featherImg}
+              alt="Feather"
+              style={{ width: 32, height: 32, marginLeft: 8, verticalAlign: 'middle', opacity: 0.85 }}
+            />
           </Typography>
           <Button
             variant="contained"
@@ -112,7 +121,7 @@ export default function Home({ onHowToPlay, onSettings, onPlayNow }) {
                     fontWeight: 500,
                     borderRadius: 2,
                     fontSize: 14,
-                    width: 110,
+                    width: 100,
                     height: 60,
                     bgcolor: "#fff",
                     boxShadow: 1,
@@ -125,7 +134,7 @@ export default function Home({ onHowToPlay, onSettings, onPlayNow }) {
                     setRandomBird(birdsWithImages[Math.floor(Math.random() * birdsWithImages.length)]);
                   }}
                 >
-                  Change Birds
+                  🐦 Next Bird
                 </Button>
               <IconButton size="small" color="primary" onClick={handleShare}>
                 <ShareIcon fontSize="small" />
