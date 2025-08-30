@@ -46,7 +46,7 @@ export default function Home({ onHowToPlay, onSettings, onPlayNow }) {
 
   return (
     <CenteredPage>
-      <Stack spacing={3} alignItems="center" sx={{ boxSizing: 'border-box', width: '100%' }}>
+  <Stack spacing={3} alignItems="center" sx={{ boxSizing: 'border-box', width: '100%', px: { xs: 1.5, sm: 0 } }}>
           <Typography variant="h4" fontWeight={700} color="#2e7d32" sx={{ fontSize: { xs: 24, sm: 32 } }}>
             FEATHER GUESS
           </Typography>
@@ -94,7 +94,7 @@ export default function Home({ onHowToPlay, onSettings, onPlayNow }) {
               Settings
             </Button>
           </Stack>
-            <Stack direction="row" spacing={2} alignItems="center" width="100%" justifyContent="center" sx={{ minHeight: 220 }}>
+            <Stack direction="row" spacing={2} alignItems="center" width="100%" justifyContent="center" sx={{ minHeight: 220, px: { xs: 1, sm: 0 } }}>
             {randomBird && (
               <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mr: 2 }}>
                 <Box sx={{ width: 260, height: 220, borderRadius: 3, overflow: 'hidden', boxShadow: 2, bgcolor: '#e0f7fa', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
