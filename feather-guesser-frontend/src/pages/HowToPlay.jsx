@@ -19,7 +19,7 @@ export default function HowToPlay({ onBack, onPlayNow }) {
             <li>If you guess wrong or time runs out, the correct answer is revealed with facts and info.</li>
             <li>Try to get the highest score! Play again to improve and learn more birds.</li>
             <li>Reverse Mode: Guess the bird image from a description snippet.</li>
-            <li>Remove Wrong Answers: One incorrect option will disappear after 10 seconds, and another after 20 seconds.</li>
+            <li>Remove Wrong Answers: Incorrect answers will disappear as time elapses.</li>
           </ol>
           <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', my: 3 }}>
             <img src="/feather.png" alt="Feather" style={{ maxWidth: 120, width: '100%', opacity: 0.85 }} />

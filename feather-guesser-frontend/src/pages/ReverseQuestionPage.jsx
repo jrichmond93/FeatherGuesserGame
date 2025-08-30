@@ -255,7 +255,7 @@ export default function ReverseQuestionPage(props) {
                     : selected === correctIdx
                       ? correctMsg || "Correct!"
                       : incorrectMsg || "Incorrect"
-                  : `${timer} seconds`}
+                  : `${timer}`}
               </Typography>
             </Box>
             <Box width="100%" sx={{ mt: 2 }}>

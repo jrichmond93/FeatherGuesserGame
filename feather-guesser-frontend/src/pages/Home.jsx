@@ -82,7 +82,7 @@ export default function Home({ onHowToPlay, onSettings, onPlayNow }) {
               sx={{ flex: 1, fontWeight: 500, borderRadius: 2, fontSize: { xs: 14, sm: 16 } }}
               onClick={onSettings}
             >
-              Settings Mode
+              Settings
             </Button>
           </Stack>
           <Stack direction="row" spacing={2} alignItems="center" width="100%" justifyContent="center">
@@ -91,6 +91,11 @@ export default function Home({ onHowToPlay, onSettings, onPlayNow }) {
                 <Box sx={{ width: 220, height: 220, borderRadius: 3, overflow: 'hidden', boxShadow: 2, bgcolor: '#e0f7fa', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <img src={randomBird.ImageUrl} alt={randomBird.CommonName || "Bird"} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </Box>
+                {randomBird.CommonName && (
+                  <Typography variant="subtitle2" color="text.primary" sx={{ mt: 1, fontWeight: 600, fontSize: 15, textAlign: 'center', maxWidth: 220, wordBreak: 'break-word' }}>
+                    {randomBird.CommonName}
+                  </Typography>
+                )}
                 {randomBird.ImageAttribution && (
                   <Typography variant="caption" color="text.secondary" sx={{ mt: 0.5, fontSize: 11, textAlign: 'center', maxWidth: 220, wordBreak: 'break-word' }}>
                     {randomBird.ImageAttribution}

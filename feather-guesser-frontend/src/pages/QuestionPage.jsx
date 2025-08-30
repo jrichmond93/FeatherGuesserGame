@@ -209,8 +209,9 @@ export default function QuestionPage({ onEndGame, onQuit, removeWrongAnswers = f
             justifyContent: 'center',
             overflow: 'hidden',
             mb: 0.5,
-            background: '#e0f7fa',
             borderRadius: 2,
+            background: 'linear-gradient(135deg, #e0f7fa 0%, #c8e6c9 60%, #e8f5e9 100%)', // more green
+            boxShadow: 2,
           }}
         >
           <CardMedia
@@ -220,12 +221,17 @@ export default function QuestionPage({ onEndGame, onQuit, removeWrongAnswers = f
             sx={{
               width: '100%',
               height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'center top',
+              objectFit: 'contain',
+              objectPosition: 'center',
               borderRadius: 2,
-              border: showAnswer ? (selected === correctIdx ? "2px solid #388e3c" : "2px solid #d32f2f") : "2px solid #e0e0e0",
+              border: showAnswer
+                ? selected === correctIdx
+                  ? "2px solid #388e3c"
+                  : "2px solid #d32f2f"
+                : "2px solid #e0e0e0",
               maxHeight: { xs: 140, sm: 200, md: 240 },
               minHeight: { xs: 140, sm: 200, md: 240 },
+              background: 'transparent',
             }}
           />
         </Box>
@@ -300,7 +306,7 @@ export default function QuestionPage({ onEndGame, onQuit, removeWrongAnswers = f
                     : selected === correctIdx
                       ? correctMsg || "Correct!"
                       : incorrectMsg || "Incorrect"
-                  : `${timer} seconds`}
+                  : `${timer}`}
               </Typography>
             </Box>
             {/* Answer buttons */}
