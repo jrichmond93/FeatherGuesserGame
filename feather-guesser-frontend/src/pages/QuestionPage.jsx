@@ -100,13 +100,14 @@ export default function QuestionPage({ onEndGame, onQuit, removeWrongAnswers = f
 
   // Remove one wrong answer (not already removed, not correct)
   function removeOneWrong() {
-    const wrongIndexes = choices
-      .map((c, idx) => idx)
-      .filter((idx) => idx !== correctIdx && !removedIndexes.includes(idx));
-    if (wrongIndexes.length === 0) return;
-    // Randomly pick one to remove
-    const toRemove = wrongIndexes[Math.floor(Math.random() * wrongIndexes.length)];
-    setRemovedIndexes((prev) => [...prev, toRemove]);
+    setRemovedIndexes((prev) => {
+      const wrongIndexes = choices
+        .map((c, idx) => idx)
+        .filter((idx) => idx !== correctIdx && !prev.includes(idx));
+      if (wrongIndexes.length === 0) return prev;
+      const toRemove = wrongIndexes[Math.floor(Math.random() * wrongIndexes.length)];
+      return [...prev, toRemove];
+    });
   }
 
   // When answer is shown, clear removed

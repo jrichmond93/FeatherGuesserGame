@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Typography, Stack, Button, FormControlLabel, Switch, Box } from "@mui/material";
 import CenteredPage from "../components/CenteredPage";
 
-export default function Settings({ mode, onToggleMode, onBack, setPage, currentMode, removeWrongAnswers, onToggleRemoveWrongAnswers }) {
+export default function Settings({ mode, onToggleMode, onBack, setPage, currentMode, removeWrongAnswers, onToggleRemoveWrongAnswers, setRemoveWrongAnswers }) {
+  // Set default to true on first mount
+  useEffect(() => {
+    if (removeWrongAnswers === undefined) {
+      setRemoveWrongAnswers(true);
+    }
+  }, [removeWrongAnswers, setRemoveWrongAnswers]);
+
   return (
     <CenteredPage>
       <Typography variant="h4" fontWeight={700} color="#388e3c" gutterBottom>
@@ -26,7 +33,7 @@ export default function Settings({ mode, onToggleMode, onBack, setPage, currentM
       <FormControlLabel
         control={
           <Switch
-            checked={removeWrongAnswers}
+            checked={removeWrongAnswers ?? true}
             onChange={onToggleRemoveWrongAnswers}
             color="primary"
           />
