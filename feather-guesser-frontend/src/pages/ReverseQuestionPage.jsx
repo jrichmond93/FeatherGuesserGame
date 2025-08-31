@@ -286,7 +286,7 @@ export default function ReverseQuestionPage(props) {
                           <CardMedia
                             component="img"
                             image={bird.ImageUrl}
-                            alt={bird.CommonName}
+                            alt={bird.ScientificName || "Bird"}
                             sx={{
                               width: '100%',
                               height: '100%',
@@ -328,7 +328,7 @@ export default function ReverseQuestionPage(props) {
                           <CardMedia
                             component="img"
                             image={bird.ImageUrl}
-                            alt={bird.CommonName}
+                            alt={bird.ScientificName || "Bird"}
                             sx={{
                               width: '100%',
                               height: '100%',

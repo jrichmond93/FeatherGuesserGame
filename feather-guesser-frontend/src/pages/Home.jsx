@@ -96,7 +96,7 @@ export default function Home({ onHowToPlay, onSettings, onPlayNow }) {
           </Stack>
             <Stack direction="row" spacing={2} alignItems="center" width="100%" justifyContent="center" sx={{ minHeight: 220, px: { xs: 1, sm: 0 } }}>
             {randomBird && (
-              <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mr: 2 }}>
+              <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mr: 2, ml: { xs: 1, sm: 0 } }}>
                 <Box sx={{ width: 260, height: 220, borderRadius: 3, overflow: 'hidden', boxShadow: 2, bgcolor: '#e0f7fa', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <img src={randomBird.ImageUrl} alt={randomBird.CommonName || "Bird"} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </Box>
@@ -112,7 +112,7 @@ export default function Home({ onHowToPlay, onSettings, onPlayNow }) {
                 )}
               </Box>
             )}
-            <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" sx={{ height: 220 }}>
+            <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" sx={{ height: 220, mr: { xs: 1, sm: 0 } }}>
                 <Button
                   variant="outlined"
                   size="small"

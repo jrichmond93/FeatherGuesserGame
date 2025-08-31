@@ -216,7 +216,7 @@ export default function QuestionPage({ onEndGame, onQuit, removeWrongAnswers = f
           <CardMedia
             component="img"
             image={current.ImageUrl}
-            alt={current.CommonName}
+            alt={current.ScientificName || "Bird"}
             sx={{
               width: '100%',
               height: '100%',
