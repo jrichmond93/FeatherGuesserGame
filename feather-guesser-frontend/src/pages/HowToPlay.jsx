@@ -18,9 +18,15 @@ export default function HowToPlay({ onBack, onPlayNow }) {
             <li>For each question, view a bird image and choose the correct name from the choices.</li>
             <li>If you guess wrong or time runs out, the correct answer is revealed with facts and info.</li>
             <li>Try to get the highest score! Play again to improve and learn more birds.</li>
-            <li>Reverse Mode: Guess the bird image from a description snippet.</li>
-            <li>Remove Wrong Answers: Incorrect answers will disappear as time elapses.</li>
           </ol>
+          <Typography variant="h6" sx={{ mt: 3, mb: 1 }}>
+            <a href="/settings" style={{ color: '#1976d2', textDecoration: 'underline' }}>Settings</a>
+          </Typography>
+          <ul style={{ paddingLeft: 24, color: '#37474f', marginTop: 0 }}>
+            <li><b>Flip Mode:</b> Guess the bird image from a description snippet.</li>
+            <li><b>Remove Wrong Answers:</b> Incorrect answers will disappear as time elapses.</li>
+            <li><b>Another Try:</b> Get a second chance after a wrong answer.</li>
+          </ul>
           <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', my: 1.2 }}>
             <img src="/feather.png" alt="Feather" style={{ maxWidth: 120, width: '100%', opacity: 0.85 }} />
           </Box>

@@ -35,15 +35,15 @@ export default function Settings({
       </Typography>
       <Stack direction="row" spacing={2} sx={{ mb: 3 }}>
         <Button variant={mode === "normal" ? "contained" : "outlined"} color="primary" onClick={onToggleMode} sx={{ fontWeight: 600, fontSize: 16, borderRadius: 2 }}>
-          Normal
+          Photo ID
         </Button>
         <Button variant={mode === "reverse" ? "contained" : "outlined"} color="secondary" onClick={onToggleMode} sx={{ fontWeight: 600, fontSize: 16, borderRadius: 2 }}>
-          Reverse
+          Flip Mode
         </Button>
       </Stack>
       <Typography variant="body2" sx={{ mb: 3 }}>
-        <b>Normal:</b> Guess the bird from the photo.<br />
-        <b>Reverse:</b> Guess the correct photo from the bird name.
+        <b>Photo ID:</b> Guess the bird from the photo.<br />
+        <b>Flip Mode:</b> Guess the correct photo from the bird name.
       </Typography>
       <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
         <FormControlLabel
@@ -63,7 +63,6 @@ export default function Settings({
               checked={anotherTry ?? true}
               onChange={onToggleAnotherTry}
               color="primary"
-              disabled={mode === "reverse"}
             />
           }
           label="Another Try (get a second chance on wrong answers)"
@@ -106,6 +105,17 @@ export default function Settings({
           Play Now
         </Button>
       </Stack>
+      <Typography variant="body2" sx={{ mt: 2 }}>
+        <span
+          style={{ color: "#1976d2", textDecoration: "underline", cursor: "pointer" }}
+          onClick={() => setPage("privacy")}
+          tabIndex={0}
+          role="button"
+          onKeyDown={e => { if (e.key === "Enter" || e.key === " ") setPage("privacy"); }}
+        >
+          Privacy Policy
+        </span>
+      </Typography>
     </CenteredPage>
   );
 }

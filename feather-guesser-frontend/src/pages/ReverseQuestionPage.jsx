@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { getRandomIncorrectResponse } from "../utils/incorrectResponses";
 import { getRandomCorrectResponse } from "../utils/correctResponses";
+import { getRandomAnotherTryResponse } from "../utils/anotherTryResponses";
 import {
   Typography,
   Stack,
@@ -15,6 +16,17 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import CenteredPage from "../components/CenteredPage";
 
+const srOnly = {
+  border: 0,
+  clip: 'rect(0 0 0 0)',
+  height: 1,
+  margin: -1,
+  overflow: 'hidden',
+  padding: 0,
+  position: 'absolute',
+  width: 1,
+};
+
 function shuffle(array) {
   let arr = array.slice();
   for (let i = arr.length - 1; i > 0; i--) {
@@ -24,12 +36,85 @@ function shuffle(array) {
   return arr;
 }
 
+function AnotherTryPlaceholder({ message, onDismiss, dismissRef, onSkip, buttonsDisabled }) {
+  return (
+    <Box
+      sx={{
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        minWidth: 220,
+        maxWidth: 340,
+        width: '90%',
+        minHeight: 80,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 20,
+        textAlign: 'center',
+        bgcolor: theme => theme.palette.mode === 'dark' ? 'rgba(80,80,80,0.97)' : 'rgba(255,255,224,0.97)',
+        border: '1.5px solid',
+        borderColor: theme => theme.palette.mode === 'dark' ? 'rgba(255,193,7,0.25)' : 'rgba(255,193,7,0.18)',
+        borderRadius: 2,
+        boxShadow: 3,
+        py: 1.2,
+        px: 2,
+        transition: 'background 0.2s',
+        backdropFilter: 'blur(2.5px)',
+      }}
+      data-testid="another-try-placeholder"
+    >
+      <div aria-live="polite" style={srOnly} key={message}>{message}</div>
+      <Typography color="warning.main" fontWeight={600} tabIndex={0} aria-live="polite" sx={{ fontSize: 18, mb: 1 }}>
+        {message}
+      </Typography>
+      <Stack direction="row" spacing={2} justifyContent="center" sx={{ mt: 0.5, mb: 0.5, width: '100%' }}>
+        <Button
+          variant="contained"
+          color="warning"
+          sx={{ fontWeight: 700, fontSize: 16, px: 3, borderRadius: 2, minWidth: 90, boxShadow: 1 }}
+          ref={dismissRef}
+          onClick={onDismiss}
+          tabIndex={0}
+          aria-label="Yes"
+          disabled={buttonsDisabled}
+        >
+          Yes
+        </Button>
+        <Button
+          variant="outlined"
+          color="warning"
+          sx={{ fontWeight: 700, fontSize: 16, px: 3, borderRadius: 2, minWidth: 90 }}
+          onClick={onSkip}
+          tabIndex={0}
+          aria-label="No"
+          disabled={buttonsDisabled}
+        >
+          No
+        </Button>
+      </Stack>
+    </Box>
+  );
+}
+
 const QUESTION_TIME = 30;
 const REVEAL_TIME = 8;
 const QUESTIONS_PER_GAME = 10;
 
-export default function ReverseQuestionPage(props) {
-  // All useState hooks first!
+export default function ReverseQuestionPage({
+  removeWrongAnswers,
+  anotherTry,
+  onEndGame,
+  onQuit
+}) {
+  // --- Refs ---
+  const anotherTryTimeout = useRef(null);
+  const anotherTryDismissRef = useRef(null);
+  const srOnlyRef = useRef(null);
+  const timerRef = useRef();
+  // --- State ---
   const [birds, setBirds] = useState([]);
   const [loading, setLoading] = useState(true);
   const [questionIdx, setQuestionIdx] = useState(0);
@@ -44,15 +129,26 @@ export default function ReverseQuestionPage(props) {
   const [showInfo, setShowInfo] = useState(false);
   const [removedIndexes, setRemovedIndexes] = useState([]);
   const [removalTimers, setRemovalTimers] = useState({});
-  const timerRef = useRef();
+  // Another Try state
+  const [showAnotherTry, setShowAnotherTry] = useState(false);
+  const [disabledIndexes, setDisabledIndexes] = useState([]);
+  const [anotherTryMsg, setAnotherTryMsg] = useState(getRandomAnotherTryResponse());
+  const [usedAnotherTry, setUsedAnotherTry] = useState(false);
+  const [anotherTryButtonsDisabled, setAnotherTryButtonsDisabled] = useState(false);
+  const [justDisabledIdx, setJustDisabledIdx] = useState(null);
 
+  // --- Effects ---
+  useEffect(() => {
+    if (showAnotherTry && anotherTryDismissRef.current) {
+      anotherTryDismissRef.current.focus();
+    }
+  }, [showAnotherTry]);
 
-  // Remove wrong answers timer logic (fix: always reset on new choices)
   useEffect(() => {
     setRemovedIndexes([]);
     Object.values(removalTimers).forEach(clearTimeout);
     setRemovalTimers({});
-    if (props.removeWrongAnswers && choices.length > 0) {
+  if (removeWrongAnswers && choices.length > 0) {
       let timers = {};
       timers.first = setTimeout(() => {
         removeOneWrong();
@@ -63,17 +159,7 @@ export default function ReverseQuestionPage(props) {
       setRemovalTimers(timers);
     }
     // eslint-disable-next-line
-  }, [choices, props.removeWrongAnswers]);
-
-  function removeOneWrong() {
-    const correctIdx = choices.findIndex(b => b.CommonName === current.CommonName);
-    const wrongIndexes = choices
-      .map((c, idx) => idx)
-      .filter(idx => idx !== correctIdx && !removedIndexes.includes(idx));
-    if (wrongIndexes.length === 0) return;
-    const toRemove = wrongIndexes[Math.floor(Math.random() * wrongIndexes.length)];
-    setRemovedIndexes(prev => [...prev, toRemove]);
-  }
+  }, [choices, removeWrongAnswers]);
 
   useEffect(() => {
     if (showAnswer) setRemovedIndexes([]);
@@ -103,6 +189,10 @@ export default function ReverseQuestionPage(props) {
       setTimer(QUESTION_TIME);
       setShowAnswer(false);
       setSelected(null);
+      setDisabledIndexes([]);
+      setUsedAnotherTry(false);
+      setShowAnotherTry(false);
+      setJustDisabledIdx(null);
     }
   }, [gameQuestions, questionIdx, birds]);
 
@@ -113,7 +203,7 @@ export default function ReverseQuestionPage(props) {
         if (questionIdx < QUESTIONS_PER_GAME - 1) {
           setQuestionIdx(q => q + 1);
         } else {
-          if (props.onEndGame) props.onEndGame(score);
+          if (onEndGame) onEndGame(score);
         }
         return;
       }
@@ -126,14 +216,63 @@ export default function ReverseQuestionPage(props) {
     }
     timerRef.current = setTimeout(() => setTimer(t => t - 1), 1000);
     return () => clearTimeout(timerRef.current);
-  }, [timer, showAnswer, questionIdx, showInfo, score, props.onEndGame]);
+  }, [timer, showAnswer, questionIdx, showInfo, score, onEndGame]);
+
+  useEffect(() => {
+    if (showAnotherTry) {
+      setAnotherTryButtonsDisabled(false);
+      anotherTryTimeout.current = setTimeout(() => {
+        dismissAnotherTry();
+      }, 7000);
+      return () => {
+        if (anotherTryTimeout.current) {
+          clearTimeout(anotherTryTimeout.current);
+          anotherTryTimeout.current = null;
+        }
+      };
+    }
+  }, [showAnotherTry]);
+
+  // --- Helpers ---
+  function removeOneWrong() {
+    const correctIdx = choices.findIndex(b => b.CommonName === (gameQuestions[questionIdx] && gameQuestions[questionIdx].CommonName));
+    const wrongIndexes = choices
+      .map((c, idx) => idx)
+      .filter(idx => idx !== correctIdx && !removedIndexes.includes(idx));
+    if (wrongIndexes.length === 0) return;
+    const toRemove = wrongIndexes[Math.floor(Math.random() * wrongIndexes.length)];
+    setRemovedIndexes(prev => [...prev, toRemove]);
+  }
+
+  function dismissAnotherTry() {
+    if (!showAnotherTry) return;
+    setAnotherTryButtonsDisabled(true);
+    if (anotherTryTimeout.current) {
+      clearTimeout(anotherTryTimeout.current);
+      anotherTryTimeout.current = null;
+    }
+    setShowAnotherTry(false);
+    setSelected(null);
+    setTimeout(() => {
+      if (srOnlyRef.current) srOnlyRef.current.focus();
+    }, 50);
+    setDisabledIndexes((prev) => {
+      if (selected !== null && !prev.includes(selected)) {
+        return [...prev, selected];
+      }
+      return prev;
+    });
+    setUsedAnotherTry(true);
+  setJustDisabledIdx(selected);
+    setTimeout(() => setAnotherTryButtonsDisabled(false), 500);
+  }
 
   function handleNext() {
     setShowInfo(false);
     if (questionIdx < QUESTIONS_PER_GAME - 1) {
       setQuestionIdx(q => q + 1);
     } else {
-      if (props.onEndGame) props.onEndGame(score);
+  if (onEndGame) onEndGame(score);
     }
   }
 
@@ -145,15 +284,32 @@ export default function ReverseQuestionPage(props) {
     setShowInfo(false);
   }
 
-  if (loading || gameQuestions.length === 0) {
-    return <Typography align="center">Loading...</Typography>;
-  }
-
-  const current = gameQuestions[questionIdx];
-  const correctIdx = choices.findIndex(b => b.CommonName === current.CommonName);
-
   function handleAnswer(idx) {
     if (showAnswer) return;
+    const correctIdx = choices.findIndex(b => b.CommonName === (gameQuestions[questionIdx] && gameQuestions[questionIdx].CommonName));
+    // If Another Try is enabled, more than 2 choices remain, and wrong answer picked
+    if (
+  anotherTry &&
+      choices.length - removedIndexes.length > 2 &&
+      idx !== correctIdx
+    ) {
+      if (!usedAnotherTry && !showAnotherTry) {
+        setSelected(idx);
+        setIncorrectMsg(getRandomIncorrectResponse());
+        setAnotherTryMsg(getRandomAnotherTryResponse());
+        Object.values(removalTimers).forEach(clearTimeout);
+        setRemovalTimers({});
+        setShowAnotherTry(true);
+        return;
+      } else {
+        setSelected(idx);
+        setShowAnswer(true);
+        setTimer(REVEAL_TIME);
+        setIncorrectMsg(getRandomIncorrectResponse());
+        setCorrectMsg("");
+        return;
+      }
+    }
     setSelected(idx);
     setShowAnswer(true);
     setTimer(REVEAL_TIME);
@@ -167,6 +323,13 @@ export default function ReverseQuestionPage(props) {
     }
   }
 
+  if (loading || gameQuestions.length === 0) {
+    return <Typography align="center">Loading...</Typography>;
+  }
+
+  const current = gameQuestions[questionIdx];
+  const correctIdx = choices.findIndex(b => b.CommonName === current.CommonName);
+
   return (
     <CenteredPage>
       <Box sx={{ position: 'fixed', top: 16, right: 24, zIndex: 10 }}>
@@ -174,7 +337,7 @@ export default function ReverseQuestionPage(props) {
           <IconButton
             color="error"
             size="large"
-            onClick={() => props.onQuit && props.onQuit()}
+            onClick={() => onQuit && onQuit()}
             sx={{ bgcolor: "#fff", boxShadow: 1, ":hover": { bgcolor: "#ffeaea" } }}
           >
             <CloseIcon />
@@ -242,7 +405,33 @@ export default function ReverseQuestionPage(props) {
           </Box>
         ) : (
           <>
-            <Box width="100%">
+            <Box width="100%" sx={{ position: 'relative' }}>
+              {/* Visually hidden focus target to remove highlight from answer buttons */}
+              <button ref={srOnlyRef} style={srOnly} tabIndex={-1} aria-hidden="true" />
+              {/* Step 1: Show Another Try placeholder message */}
+              {showAnotherTry && (
+                <AnotherTryPlaceholder
+                  message={anotherTryMsg}
+                  onDismiss={() => {
+                    setAnotherTryButtonsDisabled(true);
+                    dismissAnotherTry();
+                  }}
+                  onSkip={() => {
+                    setAnotherTryButtonsDisabled(true);
+                    if (anotherTryTimeout.current) {
+                      clearTimeout(anotherTryTimeout.current);
+                      anotherTryTimeout.current = null;
+                    }
+                    setShowAnotherTry(false);
+                    setShowAnswer(true);
+                    setTimer(REVEAL_TIME);
+                    setUsedAnotherTry(true);
+                    setTimeout(() => setAnotherTryButtonsDisabled(false), 500);
+                  }}
+                  dismissRef={anotherTryDismissRef}
+                  buttonsDisabled={anotherTryButtonsDisabled}
+                />
+              )}
               <LinearProgress
                 variant="determinate"
                 value={showAnswer ? 100 : (timer / QUESTION_TIME) * 100}
@@ -262,12 +451,13 @@ export default function ReverseQuestionPage(props) {
               <Stack direction="row" spacing={2} width="100%" justifyContent="center" alignItems="center">
                 {choices.slice(0,2).map((bird, idx) => {
                   const isRemoved = removedIndexes.includes(idx);
+                  const isJustDisabled = justDisabledIdx === idx;
                   return (
                     <Fade in={!isRemoved} key={bird.ImageUrl} timeout={500}>
                       <div>
                         <Button
                           onClick={() => handleAnswer(idx)}
-                          disabled={showAnswer || isRemoved}
+                          disabled={showAnswer || isRemoved || showAnotherTry || disabledIndexes.includes(idx) || isJustDisabled}
                           sx={{
                             p: 0,
                             border: showAnswer ? (idx === correctIdx ? "4px solid #43a047" : idx === selected ? "2px solid #d32f2f" : "2px solid #e0e0e0") : "2px solid #e0e0e0",
@@ -278,8 +468,9 @@ export default function ReverseQuestionPage(props) {
                             height: { xs: 120, sm: 150 },
                             boxShadow: showAnswer && idx === correctIdx ? '0 0 0 4px #a5d6a7, 0 0 16px 4px #43a04788' : 2,
                             bgcolor: showAnswer && idx === correctIdx ? "#e8f5e9" : undefined,
-                            opacity: isRemoved ? 0.3 : 1,
-                            filter: isRemoved ? "grayscale(1)" : undefined,
+                            opacity: isRemoved || isJustDisabled ? 0.3 : 1,
+                            filter: (isRemoved || isJustDisabled) ? "grayscale(1)" : undefined,
+                            pointerEvents: isJustDisabled ? 'none' : undefined,
                             transition: "opacity 0.5s, background 0.5s, box-shadow 0.5s, border 0.5s",
                           }}
                         >
@@ -304,12 +495,13 @@ export default function ReverseQuestionPage(props) {
                 {choices.slice(2,4).map((bird, idx) => {
                   const realIdx = idx + 2;
                   const isRemoved = removedIndexes.includes(realIdx);
+                  const isJustDisabled = justDisabledIdx === realIdx;
                   return (
                     <Fade in={!isRemoved} key={bird.ImageUrl} timeout={500}>
                       <div>
                         <Button
                           onClick={() => handleAnswer(realIdx)}
-                          disabled={showAnswer || isRemoved}
+                          disabled={showAnswer || isRemoved || showAnotherTry || disabledIndexes.includes(realIdx) || isJustDisabled}
                           sx={{
                             p: 0,
                             border: showAnswer ? (realIdx === correctIdx ? "4px solid #43a047" : realIdx === selected ? "2px solid #d32f2f" : "2px solid #e0e0e0") : "2px solid #e0e0e0",
@@ -320,8 +512,9 @@ export default function ReverseQuestionPage(props) {
                             height: { xs: 120, sm: 150 },
                             boxShadow: showAnswer && realIdx === correctIdx ? '0 0 0 4px #a5d6a7, 0 0 16px 4px #43a04788' : 2,
                             bgcolor: showAnswer && realIdx === correctIdx ? "#e8f5e9" : undefined,
-                            opacity: isRemoved ? 0.3 : 1,
-                            filter: isRemoved ? "grayscale(1)" : undefined,
+                            opacity: isRemoved || isJustDisabled ? 0.3 : 1,
+                            filter: (isRemoved || isJustDisabled) ? "grayscale(1)" : undefined,
+                            pointerEvents: isJustDisabled ? 'none' : undefined,
                             transition: "opacity 0.5s, background 0.5s, box-shadow 0.5s, border 0.5s",
                           }}
                         >

@@ -1,8 +1,9 @@
 import { useState } from "react";
+
 import Home from "./pages/Home";
 import HowToPlay from "./pages/HowToPlay";
 import Settings from "./pages/Settings";
-
+import Privacy from "./pages/Privacy";
 import QuestionPage from "./pages/QuestionPage";
 import ReverseQuestionPage from "./pages/ReverseQuestionPage";
 import EndOfGame from "./pages/EndOfGame";
@@ -34,6 +35,14 @@ function App() {
     });
   };
 
+  if (page === "privacy") {
+    return (
+      <Privacy
+        onBack={() => setPage("settings")}
+        onPlayNow={() => setPage(mode === "reverse" ? "reverse-question" : "question")}
+      />
+    );
+  }
   if (page === "howtoplay") {
     return <HowToPlay 
       onBack={() => setPage("home")} 
@@ -70,6 +79,7 @@ function App() {
       onEndGame={score => { setLastScore(score); setPage("end"); }} 
       onQuit={() => setPage("home")} 
       removeWrongAnswers={removeWrongAnswers}
+      anotherTry={anotherTry}
     />;
   }
   if (page === "end") {

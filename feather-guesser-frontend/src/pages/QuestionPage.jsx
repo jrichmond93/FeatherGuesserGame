@@ -7,9 +7,9 @@ function shuffle(array) {
   }
   return arr;
 }
-// IMPORTANT: All React hooks (useState, useEffect, useRef, etc.) must be at the very top of this component.
-// Never call hooks inside conditionals, loops, or functions. Never call hooks after a return.
-// If you break these rules, you will get a 'Rendered more hooks than during the previous render' error.
+
+// All React hooks (useState, useEffect, useRef, etc.) must be at the top level of the component.
+// Never call hooks inside conditionals, loops, or functions, or after a return.
 import React, { useState, useEffect, useRef } from "react";
 // Visually hidden style for screen readers
 const srOnly = {
@@ -106,30 +106,19 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import CenteredPage from "../components/CenteredPage";
 
-// ...existing code...
-
-
-// All hooks must be called before any logic or functions
-// (move all useState, useEffect, useRef, etc. here)
-
-// ...existing hooks and state declarations...
-
-
-
+// --- Game constants ---
 const QUESTION_TIME = 30; // seconds
 const REVEAL_TIME = 10; // seconds
 const QUESTIONS_PER_GAME = 10;
-
-// let globalHookCounter = 0;
 export default function QuestionPage({ onEndGame, onQuit, removeWrongAnswers = false, anotherTry = false }) {
-  // Ref for answer buttons (for focus management)
-  const answerButtonRefs = useRef([]);
-  // Ref for Another Try auto-dismiss timeout
-  const anotherTryTimeout = useRef(null);
-  // Ref for visually hidden focus target
-  const srOnlyRef = useRef(null);
-  //
-  // --- DO NOT MOVE HOOKS BELOW THIS LINE ---
+  // --- Refs ---
+  const answerButtonRefs = useRef([]); // For answer button focus management
+  const anotherTryTimeout = useRef(null); // For auto-dismiss timer
+  const srOnlyRef = useRef(null); // For visually hidden focus target
+  const anotherTryDismissRef = useRef(null); // For "Yes" button focus
+  const timerRef = useRef(); // For question/reveal timer
+
+  // --- State ---
   const [birds, setBirds] = useState([]);
   const [loading, setLoading] = useState(true);
   const [gameQuestions, setGameQuestions] = useState([]);
@@ -144,31 +133,23 @@ export default function QuestionPage({ onEndGame, onQuit, removeWrongAnswers = f
   const [removalTimers, setRemovalTimers] = useState({});
   const [incorrectMsg, setIncorrectMsg] = useState("");
   const [correctMsg, setCorrectMsg] = useState("");
-  const timerRef = useRef();
-  // Another Try placeholder state
+  // Another Try state
   const [showAnotherTry, setShowAnotherTry] = useState(false);
-  // Track which answer indexes should be disabled after a wrong guess with Another Try
-  const [disabledIndexes, setDisabledIndexes] = useState([]);
-  // Encouraging message for Another Try
+  const [disabledIndexes, setDisabledIndexes] = useState([]); // Which answer indexes are disabled after a wrong guess
   const [anotherTryMsg, setAnotherTryMsg] = useState(getRandomAnotherTryResponse());
-  // Track if Another Try has been used for this question
-  const [usedAnotherTry, setUsedAnotherTry] = useState(false);
-  // Ref for Dismiss button
-  const anotherTryDismissRef = useRef(null);
-  // Another Try buttons disabled state
+  const [usedAnotherTry, setUsedAnotherTry] = useState(false); // Has Another Try been used for this question
   const [anotherTryButtonsDisabled, setAnotherTryButtonsDisabled] = useState(false);
-  // Just disabled index for animation
-  const [justDisabledIdx, setJustDisabledIdx] = useState(null);
+  const [justDisabledIdx, setJustDisabledIdx] = useState(null); // For animation
 
+  // Focus "Yes" button when Another Try appears
   useEffect(() => {
     if (showAnotherTry && anotherTryDismissRef.current) {
       anotherTryDismissRef.current.focus();
     }
   }, [showAnotherTry]);
-  // --- DO NOT ADD HOOKS BELOW THIS LINE ---
 
-  // All variables and logic come after hooks
-  // Helper to dismiss the Another Try placeholder
+  // --- Logic and helpers ---
+  // Dismiss the Another Try placeholder
   function dismissAnotherTry() {
     // Guard: do nothing if already dismissed
     if (!showAnotherTry) return;
@@ -199,17 +180,7 @@ export default function QuestionPage({ onEndGame, onQuit, removeWrongAnswers = f
   const correctIdx = choices.findIndex((b) => b && b.CommonName === current.CommonName);
 
   // Debug: log relevant state for Another Try placeholder
-  if (typeof window !== 'undefined') {
-    console.log('[QuestionPage] Render:', {
-      anotherTry,
-      showAnotherTry,
-      selected,
-      correctIdx,
-      choicesLength: choices.length,
-      removedIndexesLength: removedIndexes.length,
-      showAnswer
-    });
-  }
+  // console.log('[QuestionPage] Render:', { anotherTry, showAnotherTry, selected, correctIdx, choicesLength: choices.length, removedIndexesLength: removedIndexes.length, showAnswer });
 
   // Auto-dismiss Another Try after 7 seconds
   useEffect(() => {
@@ -228,7 +199,7 @@ export default function QuestionPage({ onEndGame, onQuit, removeWrongAnswers = f
   }, [showAnotherTry]);
 
 
-  // All hooks must be called before any return
+  // --- Data fetching and game setup ---
   useEffect(() => {
     console.log('[QuestionPage] useEffect 1 (fetch birds)');
     fetch("/birds.json")
@@ -343,17 +314,10 @@ export default function QuestionPage({ onEndGame, onQuit, removeWrongAnswers = f
     return <Typography align="center">Loading...</Typography>;
   }
 
-  // (already declared at top)
+
 
   function handleAnswer(idx) {
-    console.log('[handleAnswer] called with idx:', idx, {
-      showAnswer,
-      anotherTry,
-      choicesLength: choices.length,
-      removedIndexesLength: removedIndexes.length,
-      correctIdx,
-      isWrong: idx !== correctIdx
-    });
+    // Ignore if answer already revealed
     if (showAnswer) return;
     // If Another Try is enabled, more than 2 choices remain, and wrong answer picked
     if (
@@ -365,12 +329,11 @@ export default function QuestionPage({ onEndGame, onQuit, removeWrongAnswers = f
         // First wrong guess, show Another Try
         setSelected(idx);
         setIncorrectMsg(getRandomIncorrectResponse());
-  setAnotherTryMsg(getRandomAnotherTryResponse());
+        setAnotherTryMsg(getRandomAnotherTryResponse());
         // Clear any pending answer removal timers
         Object.values(removalTimers).forEach(clearTimeout);
         setRemovalTimers({});
         setShowAnotherTry(true);
-        // setUsedAnotherTry(true); // Now handled in dismissAnotherTry
         return;
       } else {
         // Second wrong guess, show answer as normal
