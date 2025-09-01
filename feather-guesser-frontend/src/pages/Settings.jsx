@@ -63,6 +63,7 @@ export default function Settings({
               checked={anotherTry ?? true}
               onChange={onToggleAnotherTry}
               color="primary"
+              disabled={mode === "reverse"}
             />
           }
           label="Another Try (get a second chance on wrong answers)"

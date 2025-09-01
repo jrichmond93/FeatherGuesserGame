@@ -176,6 +176,7 @@ export default function QuestionPage({ onEndGame, onQuit, removeWrongAnswers = f
       anotherTryTimeout.current = null;
     }
     setShowAnotherTry(false);
+    setSelected(null);
     setDisabledIndexes((prev) => {
       if (selected !== null && !prev.includes(selected)) {
         // Focus next enabled answer after disabling
@@ -191,7 +192,6 @@ export default function QuestionPage({ onEndGame, onQuit, removeWrongAnswers = f
       }
       return prev;
     });
-    setSelected(null);
     setUsedAnotherTry(true);
     setJustDisabledIdx(selected);
     setTimeout(() => setJustDisabledIdx(null), 1200);

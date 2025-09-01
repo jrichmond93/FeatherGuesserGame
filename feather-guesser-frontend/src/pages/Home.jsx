@@ -1,4 +1,4 @@
-import { Stack, Button, Typography, IconButton, Box } from "@mui/material";
+import { Stack, Button, Typography, IconButton, Box, Dialog, DialogTitle, DialogContent, DialogActions } from "@mui/material";
 import CenteredPage from "../components/CenteredPage";
 import ShareIcon from "@mui/icons-material/Share";
 import React, { useState, useEffect, useRef } from "react";
@@ -6,6 +6,7 @@ import featherImg from '/feather.png'; // Vite will resolve this from public
 
 export default function Home({ onHowToPlay, onSettings, onPlayNow }) {
   const [randomBird, setRandomBird] = useState(null);
+  const [showBirdInfo, setShowBirdInfo] = useState(false);
   const adRef = useRef(null);
   // Share App handler
   const handleShare = async () => {
@@ -97,7 +98,14 @@ export default function Home({ onHowToPlay, onSettings, onPlayNow }) {
             <Stack direction="row" spacing={2} alignItems="center" width="100%" justifyContent="center" sx={{ minHeight: 220, px: { xs: 1, sm: 0 } }}>
             {randomBird && (
               <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mr: 2, ml: { xs: 1, sm: 0 } }}>
-                <Box sx={{ width: 260, height: 220, borderRadius: 3, overflow: 'hidden', boxShadow: 2, bgcolor: '#e0f7fa', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Box
+                  sx={{ width: 260, height: 220, borderRadius: 3, overflow: 'hidden', boxShadow: 2, bgcolor: '#e0f7fa', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+                  onClick={() => setShowBirdInfo(true)}
+                  aria-label={randomBird.CommonName ? `Show info about ${randomBird.CommonName}` : 'Show bird info'}
+                  tabIndex={0}
+                  role="button"
+                  onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') setShowBirdInfo(true); }}
+                >
                   <img src={randomBird.ImageUrl} alt={randomBird.CommonName || "Bird"} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </Box>
                 {randomBird.CommonName && (
@@ -161,7 +169,31 @@ export default function Home({ onHowToPlay, onSettings, onPlayNow }) {
               ref={adRef}
             ></ins>
           </Box>
-      </Stack>
-    </CenteredPage>
+      {/* Bird Info Overlay/Modal */}
+      <Dialog
+        open={showBirdInfo}
+        onClose={() => setShowBirdInfo(false)}
+        aria-labelledby="bird-info-title"
+        maxWidth="sm"
+        fullWidth
+      >
+        <DialogTitle id="bird-info-title">
+          {randomBird?.CommonName || 'Bird Info'}
+        </DialogTitle>
+        <DialogContent dividers>
+          <Typography
+            variant="body1"
+            sx={{ whiteSpace: 'pre-line' }}
+            dangerouslySetInnerHTML={{ __html: randomBird?.SpeciesDescription || 'No description available.' }}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setShowBirdInfo(false)} variant="contained" color="primary" autoFocus>
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
+  </Stack>
+  </CenteredPage>
   );
 }
