@@ -126,6 +126,8 @@ export default function QuestionPage({ onEndGame, onQuit, removeWrongAnswers = f
   const answerButtonRefs = useRef([]);
   // Ref for Another Try auto-dismiss timeout
   const anotherTryTimeout = useRef(null);
+  // Ref for visually hidden focus target
+  const srOnlyRef = useRef(null);
   //
   // --- DO NOT MOVE HOOKS BELOW THIS LINE ---
   const [birds, setBirds] = useState([]);
@@ -177,17 +179,12 @@ export default function QuestionPage({ onEndGame, onQuit, removeWrongAnswers = f
     }
     setShowAnotherTry(false);
     setSelected(null);
+    // Move focus to visually hidden element so no answer button is highlighted
+    setTimeout(() => {
+      if (srOnlyRef.current) srOnlyRef.current.focus();
+    }, 50);
     setDisabledIndexes((prev) => {
       if (selected !== null && !prev.includes(selected)) {
-        // Focus next enabled answer after disabling
-        setTimeout(() => {
-          const nextIdx = choices.findIndex(
-            (b, idx) => !prev.includes(idx) && idx !== selected
-          );
-          if (answerButtonRefs.current[nextIdx]) {
-            answerButtonRefs.current[nextIdx].focus();
-          }
-        }, 100);
         return [...prev, selected];
       }
       return prev;
@@ -534,6 +531,8 @@ export default function QuestionPage({ onEndGame, onQuit, removeWrongAnswers = f
             </Box>
             {/* Answer buttons */}
             <Box sx={{ position: 'relative', width: '100%' }}>
+              {/* Visually hidden focus target to remove highlight from answer buttons */}
+              <button ref={srOnlyRef} style={srOnly} tabIndex={-1} aria-hidden="true" />
               <Stack spacing={{ xs: 0.7, sm: 1 }} width="100%">
                 {choices.map((bird, idx) => {
                   const isRemoved = removedIndexes.includes(idx);
