@@ -16,10 +16,20 @@ function App() {
     const stored = localStorage.getItem("removeWrongAnswers");
     return stored === null ? false : stored === "true";
   });
+  const [anotherTry, setAnotherTry] = useState(() => {
+    const stored = localStorage.getItem("anotherTry");
+    return stored === null ? true : stored === "true";
+  });
 
   const handleToggleRemoveWrongAnswers = () => {
     setRemoveWrongAnswers((prev) => {
       localStorage.setItem("removeWrongAnswers", !prev);
+      return !prev;
+    });
+  };
+  const handleToggleAnotherTry = () => {
+    setAnotherTry((prev) => {
+      localStorage.setItem("anotherTry", !prev);
       return !prev;
     });
   };
@@ -40,6 +50,10 @@ function App() {
         currentMode={mode}
         removeWrongAnswers={removeWrongAnswers}
         onToggleRemoveWrongAnswers={handleToggleRemoveWrongAnswers}
+        setRemoveWrongAnswers={setRemoveWrongAnswers}
+        anotherTry={anotherTry}
+        setAnotherTry={setAnotherTry}
+        onToggleAnotherTry={handleToggleAnotherTry}
       />
     );
   }
@@ -48,6 +62,7 @@ function App() {
       onEndGame={score => { setLastScore(score); setPage("end"); }} 
       onQuit={() => setPage("home")} 
       removeWrongAnswers={removeWrongAnswers}
+      anotherTry={anotherTry}
     />;
   }
   if (page === "reverse-question") {

@@ -2,13 +2,28 @@ import React, { useEffect } from "react";
 import { Typography, Stack, Button, FormControlLabel, Switch, Box } from "@mui/material";
 import CenteredPage from "../components/CenteredPage";
 
-export default function Settings({ mode, onToggleMode, onBack, setPage, currentMode, removeWrongAnswers, onToggleRemoveWrongAnswers, setRemoveWrongAnswers }) {
-  // Set default to true on first mount
+export default function Settings({
+  mode,
+  onToggleMode,
+  onBack,
+  setPage,
+  currentMode,
+  removeWrongAnswers,
+  onToggleRemoveWrongAnswers,
+  setRemoveWrongAnswers,
+  anotherTry,
+  onToggleAnotherTry,
+  setAnotherTry
+}) {
+  // Set default to true on first mount for both toggles
   useEffect(() => {
     if (removeWrongAnswers === undefined) {
       setRemoveWrongAnswers(true);
     }
-  }, [removeWrongAnswers, setRemoveWrongAnswers]);
+    if (anotherTry === undefined) {
+      setAnotherTry(true);
+    }
+  }, [removeWrongAnswers, setRemoveWrongAnswers, anotherTry, setAnotherTry]);
 
   return (
     <CenteredPage>
@@ -30,17 +45,30 @@ export default function Settings({ mode, onToggleMode, onBack, setPage, currentM
         <b>Normal:</b> Guess the bird from the photo.<br />
         <b>Reverse:</b> Guess the correct photo from the bird name.
       </Typography>
-      <FormControlLabel
-        control={
-          <Switch
-            checked={removeWrongAnswers ?? true}
-            onChange={onToggleRemoveWrongAnswers}
-            color="primary"
-          />
-        }
-        label="Remove Wrong Answers (after 10s & 20s)"
-        sx={{ mb: 3 }}
-      />
+      <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+        <FormControlLabel
+          control={
+            <Switch
+              checked={removeWrongAnswers ?? true}
+              onChange={onToggleRemoveWrongAnswers}
+              color="primary"
+            />
+          }
+          label="Remove Wrong Answers (after 10s & 20s)"
+          sx={{ mb: 2, ml: 0 }}
+        />
+        <FormControlLabel
+          control={
+            <Switch
+              checked={anotherTry ?? true}
+              onChange={onToggleAnotherTry}
+              color="primary"
+            />
+          }
+          label="Another Try (get a second chance on wrong answers)"
+          sx={{ mb: 3, ml: 0 }}
+        />
+      </Box>
       <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', mb: 3 }}>
         <img src="/feather.png" alt="Feather" style={{ maxWidth: 120, width: '100%', opacity: 0.85 }} />
       </Box>
