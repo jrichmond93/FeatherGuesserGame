@@ -2,7 +2,7 @@ import React from "react";
 import { Typography, Stack, Button, Box } from "@mui/material";
 import CenteredPage from "../components/CenteredPage";
 
-export default function HowToPlay({ onBack, onPlayNow }) {
+export default function HowToPlay({ onBack, onPlayNow, onSettings }) {
   return (
     <CenteredPage>
       <Stack spacing={3} sx={{ minHeight: '80vh', justifyContent: 'space-between' }}>
@@ -20,7 +20,15 @@ export default function HowToPlay({ onBack, onPlayNow }) {
             <li>Try to get the highest score! Play again to improve and learn more birds.</li>
           </ol>
           <Typography variant="h6" sx={{ mt: 3, mb: 1 }}>
-            <a href="/settings" style={{ color: '#1976d2', textDecoration: 'underline' }}>Settings</a>
+            <span
+              style={{ color: '#1976d2', textDecoration: 'underline', cursor: 'pointer' }}
+              onClick={onSettings}
+              tabIndex={0}
+              role="button"
+              onKeyDown={e => { if (e.key === "Enter" || e.key === " ") onSettings(); }}
+            >
+              Settings
+            </span>
           </Typography>
           <ul style={{ paddingLeft: 24, color: '#37474f', marginTop: 0 }}>
             <li><b>Flip Mode:</b> Guess the bird image from a description snippet.</li>

@@ -44,10 +44,13 @@ function App() {
     );
   }
   if (page === "howtoplay") {
-    return <HowToPlay 
-      onBack={() => setPage("home")} 
-      onPlayNow={() => setPage(mode === "reverse" ? "reverse-question" : "question")}
-    />;
+    return (
+      <HowToPlay
+        onBack={() => setPage("home")}
+        onPlayNow={() => setPage(mode === "reverse" ? "reverse-question" : "question")}
+        onSettings={() => setPage("settings")}
+      />
+    );
   }
   if (page === "settings") {
     return (
