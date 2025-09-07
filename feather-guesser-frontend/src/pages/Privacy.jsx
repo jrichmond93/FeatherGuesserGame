@@ -10,7 +10,7 @@ export default function Privacy({ onBack, onPlayNow }) {
           Privacy Policy
         </Typography>
         <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
-          <b>Feather Guesser</b> does not collect or store any personal information from users. This site uses Google AdSense, which may use cookies to serve ads based on your prior visits to this or other websites. <br /><br />
+          <b>Feather Guesser</b> does not collect or store any personal information from users. This site uses Google AdSense, which may use cookies to serve ads based on your prior visits to this or other websites. (v1.0)<br /><br />
           Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to your website or other websites. Google's use of advertising cookies enables it and its partners to serve ads to your users based on their visit to your sites and/or other sites on the Internet. Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>.
         </Typography>
         <Stack direction="row" spacing={2} justifyContent="center" sx={{ mt: 3 }}>

@@ -91,6 +91,12 @@ function App() {
       maxScore={10}
       onPlayAgain={() => setPage(mode === "reverse" ? "reverse-question" : "question")}
       onHome={() => setPage("home")}
+      onSwitchMode={() => {
+        const newMode = mode === "normal" ? "reverse" : "normal";
+        setMode(newMode);
+        setPage(newMode === "reverse" ? "reverse-question" : "question");
+      }}
+      currentMode={mode}
     />;
   }
   return (

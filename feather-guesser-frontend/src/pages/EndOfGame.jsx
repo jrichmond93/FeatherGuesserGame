@@ -43,7 +43,7 @@ function getMessage(score) {
   return "Wow! You are totally awesome!";
 }
 
-export default function EndOfGame({ score, maxScore, onPlayAgain, onHome }) {
+export default function EndOfGame({ score, maxScore, onPlayAgain, onHome, onSwitchMode, currentMode }) {
   const timerRef = useRef();
   // Auto-restart after 30s
   useEffect(() => {
@@ -87,11 +87,47 @@ export default function EndOfGame({ score, maxScore, onPlayAgain, onHome }) {
             draggable={false}
           />
         </Box>
-        <Stack direction="row" spacing={2} justifyContent="center">
-          <Button variant="contained" color="primary" onClick={onPlayAgain} sx={{ fontWeight: 600, fontSize: 16, borderRadius: 2 }}>
+        <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="center" sx={{ width: '100%' }}>
+          <Button 
+            variant="contained" 
+            color="primary" 
+            onClick={onPlayAgain} 
+            sx={{ 
+              fontWeight: 600, 
+              fontSize: 16, 
+              borderRadius: 2,
+              width: { xs: '100%', sm: 'auto' }
+            }}
+          >
             Play Again
           </Button>
-          <Button variant="outlined" color="secondary" onClick={onHome} sx={{ fontWeight: 600, fontSize: 16, borderRadius: 2 }}>
+          <Button 
+            variant="contained" 
+            color="info" 
+            onClick={onSwitchMode} 
+            sx={{ 
+              fontWeight: 600, 
+              fontSize: 16, 
+              borderRadius: 2,
+              bgcolor: '#66bb6a',
+              color: 'white',
+              '&:hover': { bgcolor: '#43a047' },
+              width: { xs: '100%', sm: 'auto' }
+            }}
+          >
+            Switch to {currentMode === "normal" ? "Flip Mode" : "Photo ID"}
+          </Button>
+          <Button 
+            variant="outlined" 
+            color="secondary" 
+            onClick={onHome} 
+            sx={{ 
+              fontWeight: 600, 
+              fontSize: 16, 
+              borderRadius: 2,
+              width: { xs: '100%', sm: 'auto' }
+            }}
+          >
             Home
           </Button>
         </Stack>

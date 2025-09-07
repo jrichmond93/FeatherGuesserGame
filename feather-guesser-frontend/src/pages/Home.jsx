@@ -95,18 +95,44 @@ export default function Home({ onHowToPlay, onSettings, onPlayNow }) {
               Settings
             </Button>
           </Stack>
-            <Stack direction="row" spacing={2} alignItems="center" width="100%" justifyContent="center" sx={{ minHeight: 220, px: { xs: 1, sm: 0 } }}>
+            <Stack direction="row" spacing={2} alignItems="center" width="100%" justifyContent="center" 
+       sx={{ 
+         minHeight: 220, 
+         px: { xs: 2.5, sm: 0 },  // Increase horizontal padding on xs screens
+         mx: { xs: 'auto', sm: 0 }, // Center with auto margins on small screens
+         maxWidth: { xs: '100%', sm: '100%' }  // Control max width
+       }}>
             {randomBird && (
-              <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mr: 2, ml: { xs: 1, sm: 0 } }}>
+              <Box sx={{ 
+      display: 'flex', 
+      flexDirection: 'column', 
+      alignItems: 'center', 
+      mr: { xs: 1, sm: 2 }, 
+      ml: { xs: 1, sm: 0 },
+      maxWidth: { xs: '65%', sm: 'auto' } // Limit width on mobile
+    }}>
                 <Box
-                  sx={{ width: 260, height: 220, borderRadius: 3, overflow: 'hidden', boxShadow: 2, bgcolor: '#e0f7fa', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
+                  sx={{ 
+          width: { xs: '100%', sm: 260 }, // Make responsive width
+          maxWidth: { xs: 220, sm: 260 }, // Limit max width on mobile
+          height: { xs: 180, sm: 220 },   // Slightly smaller height on mobile
+          borderRadius: 3,
+          overflow: 'hidden',
+          boxShadow: 2,
+          bgcolor: '#e0f7fa',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          cursor: 'pointer'
+        }}
                   onClick={() => setShowBirdInfo(true)}
                   aria-label={randomBird.CommonName ? `Show info about ${randomBird.CommonName}` : 'Show bird info'}
                   tabIndex={0}
                   role="button"
                   onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') setShowBirdInfo(true); }}
                 >
-                  <img src={randomBird.ImageUrl} alt={randomBird.CommonName || "Bird"} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <img src={randomBird.ImageUrl} alt={randomBird.CommonName || "Bird"} 
+             style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </Box>
                 {randomBird.CommonName && (
                   <Typography variant="subtitle2" color="text.primary" sx={{ mt: 1, fontWeight: 600, fontSize: 15, textAlign: 'center', maxWidth: 220, wordBreak: 'break-word' }}>
@@ -120,7 +146,12 @@ export default function Home({ onHowToPlay, onSettings, onPlayNow }) {
                 )}
               </Box>
             )}
-            <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" sx={{ height: 220, mr: { xs: 1, sm: 0 } }}>
+            <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" 
+       sx={{ 
+         height: 220, 
+         mr: { xs: 1, sm: 0 },
+         ml: { xs: 1, sm: 0 } 
+       }}>
                 <Button
                   variant="outlined"
                   size="small"
