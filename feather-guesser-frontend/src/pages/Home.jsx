@@ -201,7 +201,7 @@ export default function Home({ onHowToPlay, onSettings, onPlayNow }) {
               </Box>
             </Stack>
           {/* Google AdSense Ad Unit */}
-{/*           <Box
+          <Box
             mt={2}
             width="100%"
             textAlign="center"
@@ -216,7 +216,7 @@ export default function Home({ onHowToPlay, onSettings, onPlayNow }) {
               data-full-width-responsive="true"
               ref={adRef}
             ></ins>
-          </Box> */}
+          </Box>
       {/* Bird Info Overlay/Modal */}
       <Dialog
         open={showBirdInfo}

@@ -28,24 +28,53 @@ export default function DidYouKnow({ onBack }) {
             ))}
           </Select>
         </FormControl>
-        {fact && (
-          <Paper elevation={2} sx={{ p: 2, bgcolor: '#f9fff7', mb: 2 }}>
-            <Typography variant="h6" color="primary" sx={{ mb: 1, fontWeight: 600 }}>
-              {fact.question}
-            </Typography>
-            <Divider sx={{ my: 1 }} />
-            <Typography variant="body1" color="text.secondary" sx={{ mb: 2, fontSize: 17 }}>
-              {fact.answer}
-            </Typography>
-            <Divider sx={{ my: 1 }} />
-            <Typography variant="body2" color="text.secondary" sx={{ fontSize: 15 }}>
-              {fact.narrative}
-            </Typography>
-          </Paper>
-        )}
-        <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', my: 1.2 }}>
+        {fact ? (
+          <>
+            <Paper elevation={2} sx={{ p: 2, bgcolor: '#f9fff7', mb: 2 }}>
+              <Typography variant="h6" color="primary" sx={{ mb: 1, fontWeight: 600 }}>
+                {fact.question}
+              </Typography>
+              <Divider sx={{ my: 1 }} />
+              <Typography variant="body1" color="text.secondary" sx={{ mb: 2, fontSize: 17 }}>
+                {fact.answer}
+              </Typography>
+              <Divider sx={{ my: 1 }} />
+              <Typography variant="body2" color="text.secondary" sx={{ fontSize: 15 }}>
+                {fact.narrative}
+              </Typography>
+            </Paper>
+            <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', my: 2 }}>
+              <button
+                style={{
+                  background: '#388e3c',
+                  color: '#fff',
+                  fontWeight: 600,
+                  borderRadius: 16,
+                  width: '90%',
+                  maxWidth: 320,
+                  fontSize: 18,
+                  padding: '14px 0',
+                  border: 'none',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+                  cursor: 'pointer',
+                  margin: '0 auto',
+                  display: 'block',
+                  transition: 'background 0.2s',
+                }}
+                onClick={() => onBack && onBack('question')}
+                onKeyDown={e => { if ((e.key === 'Enter' || e.key === ' ') && onBack) onBack('question'); }}
+                tabIndex={0}
+                aria-label="Play Now"
+              >
+                Play Now
+              </button>
+            </Box>
+          </>
+        ) : (
+          <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', my: 1.2 }}>
             <img src="/feather.png" alt="Feather" style={{ maxWidth: 120, width: '100%', opacity: 0.85 }} />
-        </Box>
+          </Box>
+        )}
         {/* Footer links */}
         <Box sx={{ mt: 4 }}>
           <Divider sx={{ mb: 2 }} />

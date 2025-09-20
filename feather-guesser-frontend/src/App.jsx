@@ -46,6 +46,8 @@ function App() {
         else if (target === "privacy") setPage("privacy");
         else if (target === "terms") setPage("terms");
         else if (target === "contact") setPage("contact");
+        else if (target === "question") setPage(mode === "reverse" ? "reverse-question" : "question");
+        else if (target === "reverse-question") setPage("reverse-question");
         else setPage("settings");  // Default to settings or appropriate fallback
       }} 
     />;
