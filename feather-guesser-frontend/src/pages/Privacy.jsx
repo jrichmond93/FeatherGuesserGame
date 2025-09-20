@@ -5,7 +5,7 @@ import CenteredPage from "../components/CenteredPage";
 export default function Privacy({ onBack, onPlayNow }) {
   return (
     <CenteredPage>
-      <Box sx={{ maxWidth: 500, mx: "auto", p: { xs: 2, sm: 3 }, width: "100%" }}>
+  <Box sx={{ maxWidth: 500, mx: "auto", p: { xs: 2, sm: 3 }, width: "100%", minHeight: '70vh' }}>
         <Typography variant="h5" fontWeight={700} color="#2e7d32" align="center" sx={{ mb: 2 }}>
           Privacy Policy
         </Typography>

@@ -12,10 +12,10 @@ export default function CenteredPage({ children, paperSx = {}, shake = false, ..
   return (
     <Box
       sx={{
-        width: '100%',
+        width: '100vw',
         minHeight: '100vh',
         display: 'flex',
-        alignItems: 'flex-start',
+        alignItems: 'center',
         justifyContent: 'center',
         background: 'linear-gradient(135deg, #e0f7fa 0%, #a5d6a7 100%)',
         p: 0,
@@ -30,8 +30,8 @@ export default function CenteredPage({ children, paperSx = {}, shake = false, ..
           p: { xs: '10px 8px', sm: '24px 32px' },
           borderRadius: { xs: 2, sm: 4 },
           minWidth: 0,
-          width: '100%',
-          maxWidth: { xs: 360, sm: 420, md: 500 },
+          width: 'auto',
+          maxWidth: 500,
           bgcolor: '#f5fff7',
           boxShadow: 8,
           display: 'flex',

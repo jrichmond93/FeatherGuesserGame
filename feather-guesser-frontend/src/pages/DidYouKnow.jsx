@@ -11,7 +11,7 @@ export default function DidYouKnow({ onBack }) {
 
   return (
     <CenteredPage>
-      <Box sx={{ maxWidth: 500, mx: "auto", width: "100%", p: { xs: 2, sm: 3 } }}>
+  <Box sx={{ maxWidth: 500, mx: "auto", width: "100%", p: { xs: 2, sm: 3 }, minHeight: '70vh' }}>
         <Typography variant="h5" fontWeight={700} color="#2e7d32" align="center" sx={{ mb: 2 }}>
           Did You Know?
         </Typography>
@@ -43,6 +43,9 @@ export default function DidYouKnow({ onBack }) {
             </Typography>
           </Paper>
         )}
+        <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', my: 1.2 }}>
+            <img src="/feather.png" alt="Feather" style={{ maxWidth: 120, width: '100%', opacity: 0.85 }} />
+        </Box>
         {/* Footer links */}
         <Box sx={{ mt: 4 }}>
           <Divider sx={{ mb: 2 }} />

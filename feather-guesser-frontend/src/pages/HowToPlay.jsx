@@ -5,7 +5,7 @@ import CenteredPage from "../components/CenteredPage";
 export default function HowToPlay({ onBack, onPlayNow, onSettings }) {
   return (
     <CenteredPage>
-      <Stack spacing={3} sx={{ minHeight: '80vh', justifyContent: 'space-between' }}>
+      <Stack spacing={3} sx={{ minHeight: '70vh', justifyContent: 'space-between' }}>
         <Box>
           <Typography variant="h5" fontWeight={700} color="#2e7d32" align="center">
             How to Play
@@ -16,7 +16,7 @@ export default function HowToPlay({ onBack, onPlayNow, onSettings }) {
           <ol style={{ paddingLeft: 20, color: '#37474f' }}>
             <li>Each game has 10 questions.</li>
             <li>For each question, view a bird image and choose the correct name from the choices.</li>
-            <li>If you guess wrong or time runs out, the correct answer is revealed with facts and info.</li>
+            <li>If you guess wrong or time runs out, the correct answer is revealed with facts.</li>
             <li>Try to get the highest score! Play again to improve and learn more birds.</li>
           </ol>
           <Typography variant="h6" sx={{ mt: 3, mb: 1 }}>

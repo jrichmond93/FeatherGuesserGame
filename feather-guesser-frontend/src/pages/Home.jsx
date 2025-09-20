@@ -47,7 +47,7 @@ export default function Home({ onHowToPlay, onSettings, onPlayNow }) {
 
   return (
     <CenteredPage>
-      <Stack spacing={2} alignItems="center" sx={{ boxSizing: 'border-box', width: '100%', px: { xs: 1.5, sm: 0 }, minHeight: 0 }}>
+  <Stack spacing={2} alignItems="center" sx={{ boxSizing: 'border-box', width: '100%', px: { xs: 1.5, sm: 0 }, minHeight: '70vh' }}>
           <Typography variant="h4" fontWeight={700} color="#2e7d32" sx={{ fontSize: { xs: 24, sm: 32 } }}>
             FEATHER GUESS
           </Typography>
@@ -209,7 +209,7 @@ export default function Home({ onHowToPlay, onSettings, onPlayNow }) {
           >
             <ins
               className="adsbygoogle"
-              style={{ display: "block", minHeight: 70 }}
+              style={{ display: "block", minHeight: 20 }}
               data-ad-client="ca-pub-9566952655833978"
               data-ad-slot="YYYYYYYYYY"
               data-ad-format="auto"

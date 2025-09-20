@@ -39,7 +39,16 @@ function App() {
   };
 
   if (page === "didyouknow") {
-    return <DidYouKnow onBack={() => setPage("home")} />;
+    return <DidYouKnow 
+      onBack={(target) => {
+        if (target === "home") setPage("home");
+        else if (target === "about") setPage("about");
+        else if (target === "privacy") setPage("privacy");
+        else if (target === "terms") setPage("terms");
+        else if (target === "contact") setPage("contact");
+        else setPage("settings");  // Default to settings or appropriate fallback
+      }} 
+    />;
   }
   if (page === "about") {
     return <About 
