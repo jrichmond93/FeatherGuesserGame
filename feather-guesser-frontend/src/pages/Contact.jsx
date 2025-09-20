@@ -13,7 +13,7 @@ export default function Contact({ onBack, onPlayNow }) {
           Have feedback, questions, or want to report an issue? We'd love to hear from you! Please email us at:
         </Typography>
         <Typography variant="body1" color="primary" sx={{ mb: 2 }}>
-          <Link href="mailto:featherguess@gmail.com">featherguess@gmail.com</Link>
+          <Link href="mailto:featherguessgame@gmail.com">FeatherGuessGame@gmail.com</Link>
         </Typography>
         <Stack direction="row" spacing={2} justifyContent="center" sx={{ mt: 3 }}>
           <Button
