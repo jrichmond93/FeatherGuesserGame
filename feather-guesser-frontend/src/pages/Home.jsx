@@ -47,7 +47,7 @@ export default function Home({ onHowToPlay, onSettings, onPlayNow }) {
 
   return (
     <CenteredPage>
-  <Stack spacing={3} alignItems="center" sx={{ boxSizing: 'border-box', width: '100%', px: { xs: 1.5, sm: 0 } }}>
+      <Stack spacing={2} alignItems="center" sx={{ boxSizing: 'border-box', width: '100%', px: { xs: 1.5, sm: 0 }, minHeight: 0 }}>
           <Typography variant="h4" fontWeight={700} color="#2e7d32" sx={{ fontSize: { xs: 24, sm: 32 } }}>
             FEATHER GUESS
           </Typography>
@@ -90,14 +90,13 @@ export default function Home({ onHowToPlay, onSettings, onPlayNow }) {
             <Button
               variant="outlined"
               sx={{ flex: 1, fontWeight: 500, borderRadius: 2, fontSize: { xs: 14, sm: 16 } }}
-              onClick={onSettings}
+              onClick={() => onSettings && onSettings("settings")}
             >
               Settings
             </Button>
           </Stack>
             <Stack direction="row" spacing={2} alignItems="center" width="100%" justifyContent="center" 
        sx={{ 
-         minHeight: 220, 
          px: { xs: 2.5, sm: 0 },  // Increase horizontal padding on xs screens
          mx: { xs: 'auto', sm: 0 }, // Center with auto margins on small screens
          maxWidth: { xs: '100%', sm: '100%' }  // Control max width
@@ -147,11 +146,34 @@ export default function Home({ onHowToPlay, onSettings, onPlayNow }) {
               </Box>
             )}
             <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" 
-       sx={{ 
+     sx={{ 
          height: 220, 
          mr: { xs: 1, sm: 0 },
          ml: { xs: 1, sm: 0 } 
        }}>
+              <Button
+                variant="outlined"
+                size="small"
+                sx={{
+                  mb: 1.5,
+                  fontWeight: 500,
+                  borderRadius: 2,
+                  fontSize: 14,
+                  width: 105,  // Updated to match "Next Bird" button width
+                  height: 60,
+                  bgcolor: "#fff",
+                  boxShadow: 1,
+                  ':hover': { bgcolor: "#e0f7fa" },
+                }}
+                onClick={async () => {
+                  const res = await fetch("/birds.json");
+                  const data = await res.json();
+                  const birdsWithImages = data.filter(b => b.ImageUrl);
+                  setRandomBird(birdsWithImages[Math.floor(Math.random() * birdsWithImages.length)]);
+                }}
+              >
+                🐦 Next Bird
+              </Button>
                 <Button
                   variant="outlined"
                   size="small"
@@ -160,31 +182,26 @@ export default function Home({ onHowToPlay, onSettings, onPlayNow }) {
                     fontWeight: 500,
                     borderRadius: 2,
                     fontSize: 14,
-                    width: 87,
+                    width: 105,
                     height: 60,
                     bgcolor: "#fff",
                     boxShadow: 1,
                     ':hover': { bgcolor: "#e0f7fa" },
                   }}
-                  onClick={async () => {
-                    const res = await fetch("/birds.json");
-                    const data = await res.json();
-                    const birdsWithImages = data.filter(b => b.ImageUrl);
-                    setRandomBird(birdsWithImages[Math.floor(Math.random() * birdsWithImages.length)]);
-                  }}
+                  onClick={() => onSettings("didyouknow")}
                 >
-                  🐦 Next Bird
+                  💡 Did You Know?
                 </Button>
-              <IconButton size="small" color="primary" onClick={handleShare}>
-                <ShareIcon fontSize="small" />
-              </IconButton>
-              <Typography variant="caption" color="text.secondary">
-                Share App
-              </Typography>
-            </Box>
-          </Stack>
+                <IconButton size="small" color="primary" onClick={handleShare}>
+                  <ShareIcon fontSize="small" />
+                </IconButton>
+                <Typography variant="caption" color="text.secondary">
+                  Share App
+                </Typography>
+              </Box>
+            </Stack>
           {/* Google AdSense Ad Unit */}
-          <Box
+{/*           <Box
             mt={2}
             width="100%"
             textAlign="center"
@@ -199,7 +216,7 @@ export default function Home({ onHowToPlay, onSettings, onPlayNow }) {
               data-full-width-responsive="true"
               ref={adRef}
             ></ins>
-          </Box>
+          </Box> */}
       {/* Bird Info Overlay/Modal */}
       <Dialog
         open={showBirdInfo}
@@ -224,7 +241,54 @@ export default function Home({ onHowToPlay, onSettings, onPlayNow }) {
           </Button>
         </DialogActions>
       </Dialog>
-  </Stack>
-  </CenteredPage>
+      {/* Bottom legal/info links - now inside the card, after content */}
+      <Stack direction="row" spacing={2} sx={{ mt: 3, mb: 1, width: '100%', justifyContent: 'center', alignItems: 'center' }} divider={<Box component="span" sx={{ height: 20, borderLeft: '1px solid #bdbdbd', mx: 1 }} />}>
+        <Typography variant="body2">
+          <span
+            style={{ color: "#1976d2", textDecoration: "underline", cursor: "pointer" }}
+            onClick={() => onSettings && onSettings("about")}
+            tabIndex={0}
+            role="button"
+            onKeyDown={e => { if ((e.key === "Enter" || e.key === " ") && onSettings) onSettings("about"); }}
+          >
+            About
+          </span>
+        </Typography>
+        <Typography variant="body2">
+          <span
+            style={{ color: "#1976d2", textDecoration: "underline", cursor: "pointer" }}
+            onClick={() => onSettings && onSettings("privacy")}
+            tabIndex={0}
+            role="button"
+            onKeyDown={e => { if ((e.key === "Enter" || e.key === " ") && onSettings) onSettings("privacy"); }}
+          >
+            Privacy Policy
+          </span>
+        </Typography>
+        <Typography variant="body2">
+          <span
+            style={{ color: "#1976d2", textDecoration: "underline", cursor: "pointer" }}
+            onClick={() => onSettings && onSettings("terms")}
+            tabIndex={0}
+            role="button"
+            onKeyDown={e => { if ((e.key === "Enter" || e.key === " ") && onSettings) onSettings("terms"); }}
+          >
+            Terms of Service
+          </span>
+        </Typography>
+        <Typography variant="body2">
+          <span
+            style={{ color: "#1976d2", textDecoration: "underline", cursor: "pointer" }}
+            onClick={() => onSettings && onSettings("contact")}
+            tabIndex={0}
+            role="button"
+            onKeyDown={e => { if ((e.key === "Enter" || e.key === " ") && onSettings) onSettings("contact"); }}
+          >
+            Contact
+          </span>
+        </Typography>
+      </Stack>
+    </Stack>
+    </CenteredPage>
   );
 }

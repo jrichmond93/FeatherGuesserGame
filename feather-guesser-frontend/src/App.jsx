@@ -1,19 +1,22 @@
 import { useState } from "react";
-
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Terms from "./pages/Terms";
 import Home from "./pages/Home";
+import DidYouKnow from "./pages/DidYouKnow";
 import HowToPlay from "./pages/HowToPlay";
 import Settings from "./pages/Settings";
 import Privacy from "./pages/Privacy";
 import QuestionPage from "./pages/QuestionPage";
 import ReverseQuestionPage from "./pages/ReverseQuestionPage";
 import EndOfGame from "./pages/EndOfGame";
+import { Typography } from "@mui/material";
 
 function App() {
   const [page, setPage] = useState("home");
-  const [mode, setMode] = useState("normal"); // "normal" or "reverse"
+  const [mode, setMode] = useState("normal");
   const [lastScore, setLastScore] = useState(null);
   const [removeWrongAnswers, setRemoveWrongAnswers] = useState(() => {
-    // Persist setting in localStorage
     const stored = localStorage.getItem("removeWrongAnswers");
     return stored === null ? false : stored === "true";
   });
@@ -35,10 +38,59 @@ function App() {
     });
   };
 
+  if (page === "didyouknow") {
+    return <DidYouKnow onBack={() => setPage("home")} />;
+  }
+  if (page === "about") {
+    return <About 
+      onBack={(target) => {
+        if (target === "home") setPage("home");
+        else if (target === "about") setPage("about");
+        else if (target === "privacy") setPage("privacy");
+        else if (target === "terms") setPage("terms");
+        else if (target === "contact") setPage("contact");
+        else setPage("settings");
+      }}
+      onPlayNow={() => setPage(mode === "reverse" ? "reverse-question" : "question")}
+    />;
+  }
+  if (page === "contact") {
+    return <Contact 
+      onBack={(target) => {
+        if (target === "home") setPage("home");
+        else if (target === "about") setPage("about");
+        else if (target === "privacy") setPage("privacy");
+        else if (target === "terms") setPage("terms");
+        else if (target === "contact") setPage("contact");
+        else setPage("settings");
+      }}
+      onPlayNow={() => setPage(mode === "reverse" ? "reverse-question" : "question")}
+    />;
+  }
+  if (page === "terms") {
+    return <Terms 
+      onBack={(target) => {
+        if (target === "home") setPage("home");
+        else if (target === "about") setPage("about");
+        else if (target === "privacy") setPage("privacy");
+        else if (target === "terms") setPage("terms");
+        else if (target === "contact") setPage("contact");
+        else setPage("settings");
+      }}
+      onPlayNow={() => setPage(mode === "reverse" ? "reverse-question" : "question")}
+    />;
+  }
   if (page === "privacy") {
     return (
       <Privacy
-        onBack={() => setPage("settings")}
+        onBack={(target) => {
+          if (target === "home") setPage("home");
+          else if (target === "about") setPage("about");
+          else if (target === "privacy") setPage("privacy");
+          else if (target === "terms") setPage("terms");
+          else if (target === "contact") setPage("contact");
+          else setPage("settings");
+        }}
         onPlayNow={() => setPage(mode === "reverse" ? "reverse-question" : "question")}
       />
     );
@@ -102,7 +154,28 @@ function App() {
   return (
     <Home
       onHowToPlay={() => setPage("howtoplay")}
-      onSettings={() => setPage("settings")}
+      onSettings={page => {
+        switch (page) {
+          case "didyouknow":
+            setPage("didyouknow");
+            break;
+          case "about":
+            setPage("about");
+            break;
+          case "privacy":
+            setPage("privacy");
+            break;
+          case "terms":
+            setPage("terms");
+            break;
+          case "contact":
+            setPage("contact");
+            break;
+          case "settings":
+          default:
+            setPage("settings");
+        }
+      }}
       onPlayNow={() => setPage(mode === "reverse" ? "reverse-question" : "question")}
     />
   );

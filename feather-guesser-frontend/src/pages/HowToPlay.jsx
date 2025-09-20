@@ -53,7 +53,7 @@ export default function HowToPlay({ onBack, onPlayNow, onSettings }) {
               '&:hover': { bgcolor: '#80cbc4' },
             }}
           >
-            Back
+            Home
           </Button>
           <Button
             variant="contained"

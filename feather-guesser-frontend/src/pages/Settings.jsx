@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Typography, Stack, Button, FormControlLabel, Switch, Box } from "@mui/material";
+import { Typography, Stack, Button, FormControlLabel, Switch, Box, Divider } from "@mui/material";
 import CenteredPage from "../components/CenteredPage";
 
 export default function Settings({
@@ -86,7 +86,7 @@ export default function Settings({
             '&:hover': { bgcolor: '#80cbc4' },
           }}
         >
-          Back
+          Home
         </Button>
         <Button
           variant="contained"
@@ -105,17 +105,52 @@ export default function Settings({
           Play Now
         </Button>
       </Stack>
-      <Typography variant="body2" sx={{ mt: 2 }}>
-        <span
-          style={{ color: "#1976d2", textDecoration: "underline", cursor: "pointer" }}
-          onClick={() => setPage("privacy")}
-          tabIndex={0}
-          role="button"
-          onKeyDown={e => { if (e.key === "Enter" || e.key === " ") setPage("privacy"); }}
-        >
-          Privacy Policy
-        </span>
-      </Typography>
+      <Stack direction="row" spacing={2} sx={{ mt: 2, width: '100%', justifyContent: 'center', alignItems: 'center' }} divider={<Divider orientation="vertical" flexItem />}>
+        <Typography variant="body2">
+          <span
+            style={{ color: "#1976d2", textDecoration: "underline", cursor: "pointer" }}
+            onClick={() => setPage("about")}
+            tabIndex={0}
+            role="button"
+            onKeyDown={e => { if (e.key === "Enter" || e.key === " ") setPage("about"); }}
+          >
+            About
+          </span>
+        </Typography>
+        <Typography variant="body2">
+          <span
+            style={{ color: "#1976d2", textDecoration: "underline", cursor: "pointer" }}
+            onClick={() => setPage("privacy")}
+            tabIndex={0}
+            role="button"
+            onKeyDown={e => { if (e.key === "Enter" || e.key === " ") setPage("privacy"); }}
+          >
+            Privacy Policy
+          </span>
+        </Typography>
+        <Typography variant="body2">
+          <span
+            style={{ color: "#1976d2", textDecoration: "underline", cursor: "pointer" }}
+            onClick={() => setPage("terms")}
+            tabIndex={0}
+            role="button"
+            onKeyDown={e => { if (e.key === "Enter" || e.key === " ") setPage("terms"); }}
+          >
+            Terms of Service
+          </span>
+        </Typography>
+        <Typography variant="body2">
+          <span
+            style={{ color: "#1976d2", textDecoration: "underline", cursor: "pointer" }}
+            onClick={() => setPage("contact")}
+            tabIndex={0}
+            role="button"
+            onKeyDown={e => { if (e.key === "Enter" || e.key === " ") setPage("contact"); }}
+          >
+            Contact
+          </span>
+        </Typography>
+      </Stack>
     </CenteredPage>
   );
 }
