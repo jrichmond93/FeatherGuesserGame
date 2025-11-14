@@ -12,6 +12,9 @@ export default function About({ onBack, onPlayNow }) {
         <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
           <b>Feather Guess</b> is a fun, educational game designed to help you learn about birds from around the world. Test your bird knowledge, discover new species, and enjoy beautiful bird photography. Our mission is to make learning about nature engaging and accessible for everyone.
         </Typography>
+        <Typography variant="body2" color="text.secondary" sx={{ mb: 3, fontStyle: 'italic' }}>
+          Website by AI Sure Tech <a href="https://aisuretech.com/" target="_blank" rel="noopener noreferrer" style={{ color: "#1976d2" }}>https://aisuretech.com/</a>
+        </Typography>
         <Stack direction="row" spacing={2} justifyContent="center" sx={{ mt: 3 }}>
           <Button
             variant="contained"
