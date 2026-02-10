@@ -1,8 +1,35 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Typography, Box, Button, Stack, Divider } from "@mui/material";
 import CenteredPage from "../components/CenteredPage";
 
 export default function About({ onBack, onPlayNow }) {
+  const widgetRef = useRef(null);
+
+  useEffect(() => {
+    if (widgetRef.current && window.RecommendationWidget) {
+      new window.RecommendationWidget('recommendation-widget', {
+        siteId: '15',
+        categories: 'Entertainment,Pets',
+        layout: 'carousel',
+        theme: 'light',
+        limit: 10,
+        showImages: true,
+        showDescription: true,
+        showTags: true,
+        showTitle: true,
+        title: 'Other sites you might like...',
+        imageSize: '80px',
+        imageShape: 'rounded',
+        autoRotate: true,
+        openInNewTab: true,
+        animation: 'fade',
+        hoverEffect: 'scale',
+        columns: 2,
+        descriptionLength: 60
+      });
+    }
+  }, []);
+
   return (
     <CenteredPage>
   <Box sx={{ maxWidth: 500, mx: "auto", p: { xs: 2, sm: 3 }, width: "100%", minHeight: '70vh' }}>
@@ -35,6 +62,9 @@ export default function About({ onBack, onPlayNow }) {
         </Stack>
         <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', my: 1.2 }}>
         <img src="/feather.png" alt="Feather" style={{ maxWidth: 120, width: '100%', opacity: 0.85 }} />
+        </Box>
+        <Box ref={widgetRef} sx={{ width: '100%', maxWidth: 400, mx: 'auto', my: 3 }}>
+          <div id="recommendation-widget"></div>
         </Box>
         <Stack direction="row" spacing={2} sx={{ mt: 4, width: '100%', justifyContent: 'center', alignItems: 'center' }} divider={<Divider orientation="vertical" flexItem />}>
           <Typography variant="body2">

@@ -1,0 +1,31 @@
+<script src="https://central.aisuretech.com/widget.js"></script>
+<div id="recommendation-widget" data-rec-widget
+  data-site-id="15"
+  data-categories="Entertainment,Pets"
+  data-layout="carousel"
+  data-theme="light"
+  data-limit="10"
+  data-auto-rotate="true"></div>
+
+<script>
+new RecommendationWidget('recommendation-widget', {
+  siteId: '15',
+  categories: 'Entertainment,Pets',
+  layout: 'carousel',
+  theme: 'light',
+  limit: 10,
+  showImages: true,
+  showDescription: true,
+  showTags: true,
+  showTitle: true,
+  title: 'You Might Like',
+  imageSize: '80px',
+  imageShape: 'rounded',
+  autoRotate: true,
+  openInNewTab: true,
+  animation: 'fade',
+  hoverEffect: 'scale',
+  columns: 2,
+  descriptionLength: 60
+});
+</script>
