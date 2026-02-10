@@ -63,7 +63,7 @@ export default function About({ onBack, onPlayNow }) {
         <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', my: 1.2 }}>
         <img src="/feather.png" alt="Feather" style={{ maxWidth: 120, width: '100%', opacity: 0.85 }} />
         </Box>
-        <Box ref={widgetRef} sx={{ width: '100%', maxWidth: 400, mx: 'auto', my: 3 }}>
+        <Box ref={widgetRef} sx={{ width: '100%', maxWidth: 355, mx: 'auto', my: 3 }}>
           <div id="recommendation-widget"></div>
         </Box>
         <Stack direction="row" spacing={2} sx={{ mt: 4, width: '100%', justifyContent: 'center', alignItems: 'center' }} divider={<Divider orientation="vertical" flexItem />}>
