@@ -66,7 +66,7 @@ export default function About({ onBack, onPlayNow }) {
         <Box ref={widgetRef} sx={{ width: '100%', maxWidth: 310, mx: 'auto', my: 3 }}>
           <div id="recommendation-widget"></div>
         </Box>
-        <Stack direction="row" spacing={2} sx={{ mt: 4, width: '100%', justifyContent: 'center', alignItems: 'center' }} divider={<Divider orientation="vertical" flexItem />}>
+        <Stack direction="row" spacing={1} sx={{ mt: 4, width: '100%', justifyContent: 'center', alignItems: 'center' }} divider={<Divider orientation="vertical" flexItem />}>
           <Typography variant="body2">
             <span
               style={{ color: "#1976d2", textDecoration: "underline", cursor: "pointer" }}
