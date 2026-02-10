@@ -97,7 +97,7 @@ export default function About({ onBack, onPlayNow }) {
               role="button"
               onKeyDown={e => { if ((e.key === "Enter" || e.key === " ") && onBack) onBack("terms"); }}
             >
-              Terms of Service
+              Terms
             </span>
           </Typography>
           <Typography variant="body2">
